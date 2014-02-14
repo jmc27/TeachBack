@@ -1,4 +1,4 @@
-**                           TeachBack**
+##**                           TeachBack**
 
 
 **Code Climate**: [![Code Climate](https://codeclimate.com/github/TeachBackTeam/TeachBack.png)](https://codeclimate.com/github/TeachBackTeam/TeachBack)
@@ -11,10 +11,11 @@
 **Elevator pitch**: TeachBack is a complete classroom application that offers effective and efficient means to interact, collaborate and exchange feedback in classrooms.
 
 **Team members**:
+
 	>*William Tarimo*
 
-	>*Jonathan Chu*
+	*Jonathan Chu*
 
-	>*Berk Sarioz*
-	
-	>*Nicholas Cummins*
+	*Berk Sarioz*
+
+	*Nicholas Cummins*
