@@ -1,0 +1,2 @@
+module LatestFeedbacksHelper
+end

@@ -1,0 +1,2 @@
+class LatestFeedbacksController < ApplicationController
+end

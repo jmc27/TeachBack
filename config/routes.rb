@@ -1,4 +1,32 @@
 TeachBack::Application.routes.draw do
+  resources :notifications
+
+  resources :notes
+
+  resources :attendances
+
+  resources :latest_feedbacks
+
+  resources :feedbacks
+
+  resources :post_responses
+
+  resources :posts
+
+  resources :quiz_answers
+
+  resources :quiz_questions
+
+  resources :quizzes
+
+  resources :lectures
+
+  resources :course_enrollments
+
+  resources :users
+
+  resources :courses
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
