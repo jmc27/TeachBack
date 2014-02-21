@@ -1,13 +1,13 @@
 TeachBack::Application.routes.draw do
-  resources :notifications
+  resources :latest_feedbacks
 
   resources :notes
 
   resources :attendances
 
-  resources :latest_feedbacks
-
   resources :feedbacks
+
+  resources :notifications
 
   resources :post_responses
 

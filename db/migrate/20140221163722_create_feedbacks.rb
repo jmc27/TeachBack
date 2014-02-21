@@ -3,7 +3,7 @@ class CreateFeedbacks < ActiveRecord::Migration
     create_table :feedbacks do |t|
       t.integer :lecture_id
       t.integer :course_id
-      t.integer :student_id
+      t.integer :user_id
       t.integer :interval
       t.string :feedback
       t.integer :engaged
