@@ -1,7 +1,8 @@
-class CreateCourses < ActiveRecord::Migration
+class UpdateCourse < ActiveRecord::Migration
   def change
-    create_table :courses do |t|
-      t.belongs_to :owner_user, class_name "User"
+ 
+  	  create_table :courses do |t|
+      t.belongs_to :user
       t.text :title
       t.string :course_code
       t.string :teacher_pin
