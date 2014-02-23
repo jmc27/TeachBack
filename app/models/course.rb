@@ -8,6 +8,6 @@ class Course < ActiveRecord::Base
 
 	validates :user_id, :title, :course_code, :teacher_pin, :student_pin,
 				:ta_pin, presence: true
-	validates :user_id, :title, :course_code, :teacher_pin, :student_pin,
+	validates :course_code, :teacher_pin, :student_pin,
 				:ta_pin, uniqueness: true
 end
