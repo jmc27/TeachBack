@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140222200019) do
+ActiveRecord::Schema.define(version: 20140223004627) do
 
   create_table "attendances", force: true do |t|
     t.integer  "lecture_id"
@@ -130,6 +130,7 @@ ActiveRecord::Schema.define(version: 20140222200019) do
   create_table "quiz_questions", force: true do |t|
     t.integer  "quiz_id"
     t.string   "type"
+    t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

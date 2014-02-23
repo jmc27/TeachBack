@@ -7,4 +7,6 @@ class Lecture < ActiveRecord::Base
 	has_many :notes
 	has_many :users, through: :attendance
 	has_many :notifications
+
+	validates :title, :course_id, presence: true
 end
