@@ -31,10 +31,12 @@ ActiveRecord::Schema.define(version: 20140222200019) do
   end
 
   create_table "courses", force: true do |t|
-    t.integer  "user_id"
     t.text     "title"
+    t.integer  "user_id"
     t.string   "course_code"
     t.string   "teacher_pin"
+    t.string   "student_pin"
+    t.string   "ta_pin"
     t.string   "lecture_day_time"
     t.string   "school"
     t.string   "semester"

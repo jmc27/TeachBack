@@ -9,4 +9,7 @@ class User < ActiveRecord::Base
 	has_many :notes
 	has_many :lectures, through: :attendance
 	has_many :notifications
+
+	validates :firstname, :lastname, :username, :email, presence: true
+	validates :username, :email, uniqueness: true
 end

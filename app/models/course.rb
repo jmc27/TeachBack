@@ -5,4 +5,9 @@ class Course < ActiveRecord::Base
 	has_many :quizzes
 	has_many :feedbacks
 	has_many :notifications
+
+	validates :user_id, :title, :course_code, :teacher_pin, :student_pin,
+				:ta_pin, presence: true
+	validates :user_id, :title, :course_code, :teacher_pin, :student_pin,
+				:ta_pin, uniqueness: true
 end

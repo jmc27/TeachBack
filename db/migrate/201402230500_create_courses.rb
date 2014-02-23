@@ -1,11 +1,12 @@
-class UpdateCourse < ActiveRecord::Migration
+class CreateCourses < ActiveRecord::Migration
   def change
- 
-  	  create_table :courses do |t|
-      t.belongs_to :user
+    create_table :courses do |t|
       t.text :title
+      t.integer :user_id
       t.string :course_code
       t.string :teacher_pin
+      t.string :student_pin
+      t.string :ta_pin
       t.string :lecture_day_time
       t.string :school
       t.string :semester
