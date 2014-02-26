@@ -6,6 +6,5 @@ rvm:
   - rbx
   - ruby-head
   - jruby-head
-  - ree
 
 script: "./test/basic_test_script.sh"
