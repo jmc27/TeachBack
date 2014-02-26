@@ -1,7 +1,7 @@
 ##**                           TeachBack**
 
 
-**Code Climate**: [![Code Climate](https://codeclimate.com/github/TeachBackTeam/TeachBack.png)](https://codeclimate.com/github/TeachBackTeam/TeachBack)                 **Travis-ci**: [![Build Status](https://secure.travis-ci.org/TeachBackTeam/TeachBack.png)](https://travis-ci.org/TeachBackTeam/TeachBack)
+**Code Climate**: [![Code Climate](https://codeclimate.com/github/TeachBackTeam/TeachBack.png)](https://codeclimate.com/github/TeachBackTeam/TeachBack)                 **Travis-ci**: [![Build Status](https://secure.travis-ci.org/TeachBackTeam/TeachBack.png?branch=master)](https://travis-ci.org/TeachBackTeam/TeachBack)
 
 
 **Product**: TeachBack (formerly - The Affective Tutor-Assistant)
