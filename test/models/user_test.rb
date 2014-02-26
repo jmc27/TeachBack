@@ -4,7 +4,7 @@ class UserTest < ActiveSupport::TestCase
  
  #First test: ensure that all necessary fields are filled
 
- test "user attributes must not be empty" do 	
+ test "certain user attributes must not be empty" do 	
  	user = User.new
  	assert user.invalid?
  	assert user.errors[:firstname].any?

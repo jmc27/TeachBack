@@ -8,5 +8,4 @@ rvm:
   - jruby-head
   - ree
 
-script: "rake db:seed"
-script: "rake db:test"
+script: "./test/basic_test_script.sh"
