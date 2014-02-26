@@ -3,6 +3,8 @@
 
 **Code Climate**: [![Code Climate](https://codeclimate.com/github/TeachBackTeam/TeachBack.png)](https://codeclimate.com/github/TeachBackTeam/TeachBack)
 
+**Travis-ci**: [![Build Status](https://secure.travis-ci.org/bgreenlee/pygtail.png)](http://travis-ci.org/bgreenlee/pygtail)
+
 
 **Product**: TeachBack (formerly - The Affective Tutor-Assistant)
 
