@@ -7,3 +7,6 @@ rvm:
   - ruby-head
   - jruby-head
   - ree
+
+script: "rake db:seed"
+script: "rake db:test"
