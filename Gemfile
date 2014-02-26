@@ -40,7 +40,7 @@ gem 'pry-debugger'
 gem 'pry-stack_explorer'
 gem 'awesome_print'
 gem 'hirb'
-
+gem 'rake', :group => :test
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
