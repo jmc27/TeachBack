@@ -1,0 +1,18 @@
+User story: "As a prospective TeachBack user I would like to be able to create an account"
+Look at manual creation, Janrain, OneLogin, etc.
+
+User story: "As a TeachBack user I would be able to log in"
+Look at Devise gem
+
+User story: "As a TeachBack admin or professor I would like to be able to create or manage courses and lectures"
+This is just controller/model/view work
+
+User story: "As a student I would like to be able to register for a course"
+
+User story: "As a student I would like to be able to send feedback during a lecture"
+
+User story: "As a professor I would like real-time updates about the current sentiment in the lecture"
+Pusher + Smoothie charts: http://www.youtube.com/watch?v=VLTsT30TZYw
+
+User story: "As a professor I would like to be able to see charts which aggregate the current sentiment of the lecture at various points in time during the lecture"
+cron job: http://en.wikipedia.org/wiki/Cron
