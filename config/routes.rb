@@ -1,6 +1,6 @@
 TeachBack::Application.routes.draw do
   devise_for :users
-  resources :users
+  resources :users 
   resources :latest_feedbacks
 
   resources :notes

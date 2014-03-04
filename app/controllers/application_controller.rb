@@ -9,6 +9,10 @@ class ApplicationController < ActionController::Base
     user_path(current_user)
   end
 
+  def after_updated_account_path_for(resource)
+  	user_path(current_user)
+  end
+
   protected
 
   #Allow additional parameters
