@@ -1,5 +1,9 @@
 TeachBack::Application.routes.draw do
   devise_for :users
+
+  #Provides default path for signed in users
+ 
+  match 'user_root' => 'users#show', as: :user_root, via: :all
   resources :users 
   resources :latest_feedbacks
 
