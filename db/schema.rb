@@ -31,23 +31,6 @@ ActiveRecord::Schema.define(version: 20140304040748) do
     t.datetime "updated_at"
   end
 
-  create_table "courses", force: true do |t|
-    t.text     "title"
-    t.integer  "user_id"
-    t.string   "course_code"
-    t.string   "teacher_pin"
-    t.string   "student_pin"
-    t.string   "ta_pin"
-    t.string   "lecture_day_time"
-    t.string   "school"
-    t.string   "semester"
-    t.string   "location"
-    t.integer  "instructor_id"
-    t.string   "instructor_name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "feedbacks", force: true do |t|
     t.integer  "lecture_id"
     t.integer  "course_id"
@@ -81,10 +64,10 @@ ActiveRecord::Schema.define(version: 20140304040748) do
 
   create_table "notes", force: true do |t|
     t.integer  "lecture_id"
+    t.integer  "user_id"
     t.text     "note"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
   end
 
   create_table "notifications", force: true do |t|
