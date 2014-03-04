@@ -1,4 +1,6 @@
 TeachBack::Application.routes.draw do
+  devise_for :users
+  resources :users
   resources :latest_feedbacks
 
   resources :notes
@@ -23,9 +25,9 @@ TeachBack::Application.routes.draw do
 
   resources :course_enrollments
 
-  resources :users
-
   resources :courses
+
+  root :to => "home#index"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

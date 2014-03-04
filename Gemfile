@@ -14,6 +14,9 @@ gem 'sass-rails', '~> 4.0.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
+#Use Devise for authentication
+gem 'devise'
+
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 
@@ -42,7 +45,7 @@ gem 'awesome_print'
 gem 'hirb'
 #gem 'rake', :group => :test
 # Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.1.2'
+# gem 'bcrypt'
 
 # Use unicorn as the app server
 # gem 'unicorn'
