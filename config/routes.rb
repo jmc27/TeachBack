@@ -1,10 +1,23 @@
 TeachBack::Application.routes.draw do
   devise_for :users
 
+
+  #Set root to sign-in page
+  
+  devise_scope :user do
+    root to: "devise/sessions#new"
+  end
+
   #Provides default path for signed in users
  
   match 'user_root' => 'users#show', as: :user_root, via: :all
-  resources :users 
+  match '/users/sign_in' => 'home#index', via: :all
+  #Make it possible for users to view their enrollments and created courses
+  resources :users do
+    resources :course_enrollments
+    resources :courses
+  end
+
   resources :latest_feedbacks
 
   resources :notes
@@ -25,13 +38,17 @@ TeachBack::Application.routes.draw do
 
   resources :quizzes
 
-  resources :lectures
+#Don't want separate access consider deleting
+#  resources :lectures
 
-  resources :course_enrollments
+ #Don't want separate access consider deleting
+ # resources :course_enrollments
 
-  resources :courses
+  resources :courses do
+    resources :lectures
+  end
 
-  root :to => "home#index"
+  #root :to => "home#index"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
