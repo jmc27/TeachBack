@@ -59,45 +59,52 @@
         
         <div class = "col-md-3 col-md-offset-1 col-sm-4 col-sm-offset-1 col-lg-3 col-lg-offset-1">
           <h2>Returning User?</h2>
-
+          <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
           <form class="form-horizontal" role="form">
             <div class = "row">
                 <div class="form-group ">
                   <div class="col-md-6">
-                      <input type="text" class="form-control" id="username" placeholder="Username">
+                      
+                      <h4>Email:</h4>
+                      <%= f.email_field :email, :autofocus => true %>
+                      
                   </div>
                   <div class="col-md-6">
-                      <input type="password" class="form-control" id="password" placeholder="Password">
+                      <h4>Password</h4>
+                      <%= f.password_field :password %>
                   </div>
                 </div>
             </div>
             <div class = "row">
               <div class="form-group">
                 <div class="col-md-6">
-                  <div class="checkbox">
-                    <label>
-                      <input type="checkbox"> Remember Me
-                    </label>
-                  </div>
+                  <% if devise_mapping.rememberable? -%>
+                      <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+                   <% end -%>
                 </div>
                   <div class="col-md-6">
-                      <a href="#" id="loginButton" class="btn btn-primary btn-large btn-block">Login</a>
+                      <%= f.submit "Sign in" %>
                   </div>
+                  
               </div>
             </div>
-          </form>
+          </form><% end %>
+           
           <hr>
           
             <h2>New to TeachBack?</h2>
-          
+          <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+          <%= devise_error_messages! %>
           <form class="form-horizontal" role="form">
             <div class = "row">
               <div class="form-group ">
                 <div class="col-md-6">
-                    <input type="text" class="form-control" id="firstName" placeholder="First Name">
+                    <h4>First Name</h4>
+                    <%= f.text_field :first_name %>
                 </div>
                 <div class="col-md-6">
-                    <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+                    <h4>Last Name</h4>
+                    <%= f.text_field :last_name %>
                 </div>
               </div>
             </div>
@@ -110,21 +117,22 @@
             </div>
             <div class = "row">
               <div class="form-group ">
-                <div class="col-md-6">
-                    <input type="email" class="form-control" id="email1" placeholder="Your E-mail">
+                <div class="col-md-12">
+                    <h4>Email</h4>
+                    <%= f.email_field :email, :autofocus => true %>
                 </div>
-                <div class="col-md-6">
-                    <input type="email" class="form-control" id="email2" placeholder="Re-enter E-mail">
-                </div>
+                
               </div>
             </div>
             <div class = "row">
               <div class="form-group ">
                 <div class="col-md-6">
-                    <input type="password" class="form-control" id="password1" placeholder="New Password">
+                    <h4>Password</h4>
+                    <%= f.password_field :password %>
                 </div>
                 <div class="col-md-6">
-                    <input type="password" class="form-control" id="password2" placeholder="Re-enter Password">
+                    <h4>Password Confirmation</h4>
+                    <%= f.password_field :password_confirmation %>
                 </div>
               </div>
             </div>
@@ -132,12 +140,12 @@
               <div class="form-group">
                 
                   <div class="col-md-12">
-                      <a href="#" id="signupButton" class="btn btn-primary btn-large btn-block">Sign Up</a>
+                      <div><%= f.submit "Sign up" %></div>
                   </div>
               </div>
             </div>
             
-          </form>
+          </form><% end %>
         </div>     
       </div>
     </div>
@@ -165,14 +173,14 @@
   <!-- Include all compiled plugins (below), or include individual files as needed -->
   <script src="js/bootstrap.min.js"></script>
     
-    <script>
+    <script type = "text/javascript">
       $(function (){
         $('.carousel').carousel({
           interval: 4000
         });
 
          $('.carousel').carousel('cycle');
-      })    
+      });    
     </script>
 
       
