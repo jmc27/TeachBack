@@ -39,10 +39,16 @@ end
 
 gem 'pry-rails'
 gem 'pry'
-gem 'pry-debugger'
+#gem 'pry-debugger'
 gem 'pry-stack_explorer'
 gem 'awesome_print'
 gem 'hirb'
+
+
+gem 'twitter-bootstrap-rails'
+gem 'less-rails'
+
+
 #gem 'rake', :group => :test
 # Use ActiveModel has_secure_password
 # gem 'bcrypt'
