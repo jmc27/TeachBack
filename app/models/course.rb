@@ -1,5 +1,5 @@
 class Course < ActiveRecord::Base
-	belongs_to :owner_user, :class_name => "User"
+	belongs_to :owner, :class_name => "User"
 	has_many :users, through: :course_enrollment
 	has_many :lectures
 	has_many :quizzes
