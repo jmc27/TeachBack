@@ -69,7 +69,7 @@
         </div>
       </div>
         
-        <div class = "col-md-3 col-md-offset-1 col-sm-4 col-sm-offset-1 col-lg-3 col-lg-offset-1">
+        <div class = "col-md-4 col-sm-5 col-lg-4">
           <h2>Returning User?</h2>
           <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
           <form class="form-horizontal" role="form">
@@ -77,13 +77,12 @@
                 <div class="form-group ">
                   <div class="col-md-6">
                       
-                      <h4>Email:</h4>
-                      <%= f.email_field :email, :autofocus => true %>
+                      <%= f.email_field :email, :autofocus => true, class: "form-control", placeholder: "Email" %>
                       
                   </div>
                   <div class="col-md-6">
-                      <h4>Password</h4>
-                      <%= f.password_field :password %>
+                      
+                      <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
                   </div>
                 </div>
             </div>
@@ -91,11 +90,11 @@
               <div class="form-group">
                 <div class="col-md-6">
                   <% if devise_mapping.rememberable? -%>
-                      <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+                      <%= f.check_box :remember_me %> <%= f.label :remember_me %>
                    <% end -%>
                 </div>
                   <div class="col-md-6">
-                      <%= f.submit "Sign in" %>
+                      <%= f.submit "Sign in",  class: "btn btn-primary btn-large btn-block" %>
                   </div>
                   
               </div>
@@ -111,27 +110,27 @@
             <div class = "row">
               <div class="form-group ">
                 <div class="col-md-6">
-                    <h4>First Name</h4>
-                    <%= f.text_field :first_name %>
+                    
+                    <%= f.text_field :first_name, class:"form-control", placeholder: "First Name" %>
                 </div>
                 <div class="col-md-6">
-                    <h4>Last Name</h4>
-                    <%= f.text_field :last_name %>
+                    
+                    <%= f.text_field :last_name, class: "form-control", placeholder: "LastName"  %>
                 </div>
               </div>
             </div>
             <div class = "row">
               <div class="form-group ">
                 <div class="col-md-12">
-                    <input type="text" class="form-control" id="username1" placeholder="Username">
+                    <input type="text" class="form-control" placeholder="Username">
                 </div>
               </div>
             </div>
             <div class = "row">
               <div class="form-group ">
                 <div class="col-md-12">
-                    <h4>Email</h4>
-                    <%= f.email_field :email, :autofocus => true %>
+                    
+                    <%= f.email_field :email, :autofocus => true, class: "form-control", placeholder:"Your E-mail" %>
                 </div>
                 
               </div>
@@ -139,12 +138,12 @@
             <div class = "row">
               <div class="form-group ">
                 <div class="col-md-6">
-                    <h4>Password</h4>
-                    <%= f.password_field :password %>
+                    
+                    <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
                 </div>
                 <div class="col-md-6">
-                    <h4>Password Confirmation</h4>
-                    <%= f.password_field :password_confirmation %>
+                    
+                    <%= f.password_field :password_confirmation, class: "form-control", id: "password2", placeholder: "Re-enter Password"%>
                 </div>
               </div>
             </div>
@@ -152,7 +151,7 @@
               <div class="form-group">
                 
                   <div class="col-md-12">
-                      <%= f.submit "Sign up" %>
+                      <%= f.submit "Sign up", class: "btn btn-primary btn-large btn-block" %>
                   </div>
               </div>
             </div>
