@@ -3,7 +3,7 @@ TeachBack::Application.routes.draw do
 
 
   #Set root to sign-in page
-  
+
   devise_scope :user do
     root to: "devise/sessions#new"
   end
@@ -12,10 +12,13 @@ TeachBack::Application.routes.draw do
  
   match 'user_root' => 'users#show', as: :user_root, via: :all
   match '/users/sign_in' => 'home#index', via: :all
-  #Make it possible for users to view their enrollments and created courses
+  
+
+  #Make it possible for users to view their enrollments and created courses, consider routing
   resources :users do
     resources :course_enrollments
-    resources :courses
+    #HAVE TO DECIDE HERE OR SEPERATE
+    #resources :courses
   end
 
   resources :latest_feedbacks

@@ -7,6 +7,8 @@ class UsersController < ApplicationController
 
   private
 
+
+  #Set the current user before anything else
   def set_user
     @user = current_user
   end
