@@ -38,6 +38,7 @@ b, strong{
     border: none;
     background-color: #222222;
     overflow-y: auto;
+    float: left;
 }
 .dashName{
     position:absolute;
@@ -102,10 +103,10 @@ b, strong{
 }
 @media(min-width: 800px){
     .carousel-inner > .item{
-        height: 200px;  
+        height: 600px;  
     } 
     #wrapper {
-        padding-left: 200px;
+        padding-left: 600px;
     }
 
     .page-wrapper {

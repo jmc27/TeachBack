@@ -18,7 +18,7 @@
         </ul>
         <ul class="nav navbar-nav navbar-right rpad">
           <li><a href="dashboard.html" id="userProfile"><i class="glyphicon glyphicon-user"></i> John Smith</a></li>
-          <li><a href="index.html" id="userLogoutButton" title="Log Out of TeachBack"><i class="glyphicon glyphicon-log-out"></i></a></li>
+          <li><a href="index.html" id="userLogoutButton" title="Log Out of TeachBack"><i class="glyphicon glyphicon-log-out"><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></i></a></li>
         </ul>
     	</div>
     </nav>
@@ -45,7 +45,8 @@
         <div class="panel panel-primary">
           <div class="panel-heading">
             <h4 class="panel-title"><i class="glyphicon glyphicon-th-list"></i> My Current Courses
-            <button role="button" href="#newCourseModal" class="pull-right btn btn-default" data-toggle="modal"><i class="glyphicon glyphicon-edit"> New Course</i></button></h4>
+            <button role="button" href="#newCourseModal" class="pull-right btn btn-default" data-toggle="modal"><i class="glyphicon glyphicon-edit"> 
+              <a href="/courses/new">Create Courses</a></i></button></h4>
           </div>
           <div class="panel-body">
             <div id="currentCourses" class="list-group">
@@ -228,10 +229,5 @@
     <!-- ***************** -->
   </div>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-<a href="/courses/new">Create Courses</a>
 
 
