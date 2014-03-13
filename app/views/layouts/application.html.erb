@@ -1,29 +1,41 @@
 <!DOCTYPE html>
 <html lang = "en">
-<p class="navbar-text pull-right">
-<% if user_signed_in? %>
-  Logged in as <strong><%= current_user.email %></strong>.
-  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-<% else %>
-  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-<% end %>
+
 <head>
-  
-  <link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
+   
   
   <title>TeachBack</title>
-  <%= favicon_link_tag 'favicon.ico' %>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag "bootstrap.min.css" %>
+  <%= stylesheet_link_tag "bootstrap-theme.min" %>
+  <%= stylesheet_link_tag "morris" %>
+  <%= stylesheet_link_tag "teachback" %>
+  <%= stylesheet_link_tag "//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" %>
+  <%= stylesheet_link_tag "http://fonts.googleapis.com/css?family=Lato:300,400" %>
+  <%= stylesheet_link_tag "http://fonts.googleapis.com/css?family=Abel" %>
+
+  <%= javascript_include_tag "bootstrap.min" %>
+  <%= javascript_include_tag "html5shiv" %>
+  <%= javascript_include_tag "jquery.tablesorter" %>
+  <%= javascript_include_tag "raphael-min" %>
+  <%= javascript_include_tag "respond.min" %>
+  <%= javascript_include_tag "tables" %>
   <%= csrf_meta_tags %>
+  
+  
   
   
 </head>
 <body>
-  
+  <p class="navbar-text pull-right">
+    <% if user_signed_in? %>
+      Logged in as <strong><%= current_user.email %></strong>.
+      <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+      <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+    <% else %>
+      <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+      <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+    <% end %>
+  </p>
 <% if notice %>
   <p class="alert alert-notice"><%= notice %></p>
 <% end %>
