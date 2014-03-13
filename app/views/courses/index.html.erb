@@ -1,3 +1,7 @@
 <h1>Courses</h1>
-<h2>Owned Courses: <%= @owned_courses %></h2>
+<h2>Owned Courses:</h2>
+<% @owned_courses.each do |c| %>
+	<%= link_to c.title, course_path(c) %>
+	<br/>
+<% end %>
 <h2>Find me: TeachBack/app/views/courses/index.html.erb</h2>

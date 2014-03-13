@@ -1,13 +1,13 @@
 class CoursesController < ApplicationController
 	before_action :authenticate_user!
 	before_action :set_user
-	before_action :set_product, only: [:show, :edit, :update, :destroy]
+	before_action :set_course, only: [:show, :edit, :update, :destroy]
 
 
 	#GET /courses
 
 	def index
-		@owned_courses = Course.where(:owner_id => @user.id).pluck(:title)
+		@owned_courses = Course.where(:owner_id => @user.id)
 	end
 
 	#GET courses/:id
@@ -45,8 +45,8 @@ class CoursesController < ApplicationController
 		@user = current_user
 	end
 
-	#Sets current product
-	def set_product
+	#Sets current course
+	def set_course
 		@course = Course.find(params[:id])
 	end
 

@@ -1,0 +1,6 @@
+<h1>Lectures for <%= @course.title %></h1>
+<% @lectures.each do |c| %>
+	<%= link_to c.title, course_lecture_path(:course_id => @course.id, :id => c.id) %>
+	<br/>
+<% end %>
+<h2>Find me: TeachBack/app/views/lectures/index.html.erb</h2>
