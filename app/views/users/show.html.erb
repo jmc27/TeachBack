@@ -48,38 +48,21 @@
             <button role="button" href="#newCourseModal" class="pull-right btn btn-default" data-toggle="modal"><i class="glyphicon glyphicon-edit"> 
               <a href="/courses/new">Create Courses</a></i></button></h4>
           </div>
+
           <div class="panel-body">
             <div id="currentCourses" class="list-group">
-              <a href="coursePage_Instr.html" class="list-group-item">
-                <h4 class="list-group-item-heading">COSI 155: 3D Graphics</h4>
+              <% @owned_courses.each do |c| %>
+                
+                <a href="coursePage_Instr.html" class="list-group-item">
+                <h4 class="list-group-item-heading">
+                  <%= link_to c.title, course_path(c) %>
+                </h4>
                 <p class="list-group-item-text">Mandel G03: T,F 10:00 - 11:50</p>
                 <p class="list-group-item-text">Instructor: Timothy Hickey</p>
               </a>
-              <a href="coursePage_Student.html" class="list-group-item">
-                <h4 class="list-group-item-heading">COSI 236B: Software Development for IT Intrepreneuship</h4>
-                <p class="list-group-item-text">Mandel G03: T,F 12:30 - 13:50</p>
-                <p class="list-group-item-text">Instructor: Pito Salas</p>
-              </a>
-              <a href="#" class="list-group-item">
-                <h4 class="list-group-item-heading">COSI 177: Scientific Computing</h4>
-                <p class="list-group-item-text">Volen 119: T,F 12:30 - 13:50</p>
-                <p class="list-group-item-text">Instructor: Antonella Dililo</p>
-              </a>
-              <a href="#" class="list-group-item">
-                <h4 class="list-group-item-heading">COSI 155: 3D Graphics</h4>
-                <p class="list-group-item-text">Mandel G03: T,F 10:00 - 11:50</p>
-                <p class="list-group-item-text">Instructor: Timothy Hickey</p>
-              </a>
-              <a href="#" class="list-group-item">
-                <h4 class="list-group-item-heading">COSI 236B: Software Development for IT Intrepreneuship</h4>
-                <p class="list-group-item-text">Mandel G03: T,F 12:30 - 13:50</p>
-                <p class="list-group-item-text">Instructor: Pito Salas</p>
-              </a>
-              <a href="#" class="list-group-item">
-                <h4 class="list-group-item-heading">COSI 177: Scientific Computing</h4>
-                <p class="list-group-item-text">Volen 119: T,F 12:30 - 13:50</p>
-                <p class="list-group-item-text">Instructor: Antonella Dililo</p>
-              </a>
+              <% end %>
+              
+              
 
             </div>
           </div>
