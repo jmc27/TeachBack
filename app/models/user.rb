@@ -2,7 +2,8 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :created_courses, :class_name => "Course"
-  has_many :courses, through: :course_enrollment
+  has_many :courses, through: :course_enrollments
+  has_many :course_enrollments
   has_many :quiz_answers
   has_many :posts
   has_many :post_responses
