@@ -45,7 +45,7 @@ gem 'awesome_print'
 gem 'hirb'
 
 
-gem 'twitter-bootstrap-rails'
+gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 gem 'less-rails'
 
 

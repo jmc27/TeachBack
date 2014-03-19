@@ -23,6 +23,10 @@ b, strong{
     height: 420px;
     overflow: auto;
 }
+.tableItem {
+    height: 600px;
+    overflow: auto;
+}
 .side-nav {
     margin-left: -225px;
     left: 225px;
@@ -34,6 +38,7 @@ b, strong{
     border: none;
     background-color: #222222;
     overflow-y: auto;
+    float: left;
 }
 .dashName{
     position:absolute;
@@ -71,6 +76,15 @@ b, strong{
     top: 10px;
     
 }
+.gravatar{
+    height:auto; 
+    width:auto; 
+    max-width:40px;
+    max-height:40px;
+}
+.notification{
+    padding-top: 0px;
+}
 .alert{
     font-family: 'Abel', sans-serif;
     font-size: 15px;
@@ -80,13 +94,19 @@ b, strong{
 .carousel-inner > .item{
     height: 600px;   
 }
-
+.carousel-inner > .item > img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    height: auto;
+}
 @media(min-width: 800px){
     .carousel-inner > .item{
         height: 600px;  
     } 
     #wrapper {
-        padding-left: 200px;
+        padding-left: 600px;
     }
 
     .page-wrapper {
@@ -110,22 +130,36 @@ hr {
     padding-top: 0px;
 }
 
-
+.courseDetails{
+    text-align:center;
+    padding-top:0px;
+    padding-bottom:0px;
+    font-family: 'Abel', sans-serif;
+    font-size: 15px;
+}
+.lectureDetails{
+    padding-top:0px;
+    padding-bottom:0px;
+    font-family: 'Abel', sans-serif;
+    font-size: 15px;
+    text-align:auto;
+}
 .bs-docs-footer{
     padding-top:10px;
     padding-bottom:20px;
     margin-top:100px;
     background-color:#eeefe9;
     text-align:center;
-    border-top:1px solid #e5e5e5
+    border-top:1px solid #e5e5e5;
+    
 }
 .bs-docs-footer-links{
     margin-top:20px;
-    padding-left:0;color:#999
+    padding-left:0;color:#999;
 }
 .bs-docs-footer-links li{
     display:inline;
-    padding:0 2px
+    padding:0 2px;
 }
 .bs-docs-footer-links li:first-child{
     padding-left:0
@@ -137,7 +171,7 @@ hr {
     }
 }
 .bs-docs-footer{
-    margin-top:0;border-top:0
+    margin-top:0;border-top:0;
 }
 
 .panel > .list-group

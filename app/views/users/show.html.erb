@@ -1,8 +1,193 @@
-<h1>Hey there <%= @user.first_name %>!</h1>
+    <!--                        HEADER                      -->
+  <div id="wrapper">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="index.html">TeachBack</a>
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav side-nav">
+          <li class="active"><a href="dashboard.html"><i class="glyphicon glyphicon-dashboard"></i> Dashboard</a></li>
+          <li><a href="pastCourses.html"><i class="glyphicon glyphicon-list-alt"></i> Past Courses</a></li>
+          <li><a href="editProfile.html"><i class="glyphicon glyphicon-edit"></i> Edit Profile</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right rpad">
+          <li><a href="dashboard.html" id="userProfile"><i class="glyphicon glyphicon-user"></i> John Smith</a></li>
+          <li><a href="index.html" id="userLogoutButton" title="Log Out of TeachBack"><i class="glyphicon glyphicon-log-out"> </i></a></li>
+        </ul>
+    	</div>
+    </nav>
+    <!-- *********** -->
 
-<h2>Find me: TeachBack/app/views/users/show.html.erb</h2>
+    <!--                              USER DASHBOARD                -->
+    <div class="container tpad bpad page-wrapper">
+      <div class="panel dashPanel">
+        <img class="dashPicture img-circle" id="dashImage" src="http://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/twDq00QDud4/s120-c/photo.jpg" alt="John Smith">
+        <div class="dashName" id="dashFullName"><small>John Smith</small></div>
+        <div class="dashCred">
+          <p> <i class="glyphicon glyphicon-envelope" id="dashEmail"></i> jsmith@brandeis.edu
+            <br
+            /> <i class="glyphicon glyphicon-user" id="dashUserName"></i> jsmith
+        </div>
+      </div>
+    </div>
+    <!--  ***********  -->
+
+    <!--                               CONTENT                -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-8 scrollable">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h4 class="panel-title"><i class="glyphicon glyphicon-th-list"></i> My Current Courses
+            <button role="button" href="#newCourseModal" class="pull-right btn btn-default" data-toggle="modal"><i class="glyphicon glyphicon-edit"> 
+              <a href="/courses/new">Create Courses</a></i></button></h4>
+          </div>
+
+          <div class="panel-body">
+            <div id="currentCourses" class="list-group">
+              <% @owned_courses.each do |c| %>
+                
+                <a href="coursePage_Instr.html" class="list-group-item">
+                <h4 class="list-group-item-heading">
+                  <%= link_to c.title, course_path(c) %>
+                </h4>
+                <p class="list-group-item-text">Mandel G03: T,F 10:00 - 11:50</p>
+                <p class="list-group-item-text">Instructor: Timothy Hickey</p>
+              </a>
+              <% end %>
+              
+              
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 scrollable">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h4 class="panel-title"><i class="glyphicon glyphicon-bell"></i> TeachBack Notifications</h4>
+          </div>
+          <div id="userNotifications" class="panel-body">
+            <div class="alert alert-warning">
+              <strong>Warning!</strong> Better check yourself, you're not looking too good.
+            </div>
+            <div class="alert alert-success">
+              <strong>Warning!</strong> Better check yourself, you're not looking too good.
+            </div>
+            <div class="alert alert-info">
+              <strong>Warning!</strong> Better check yourself, you're not looking too good.
+            </div>
+            <div class="alert alert-danger">
+              <strong>Warning!</strong> Better check yourself, you're not looking too good.
+            </div>
+            <div class="alert alert-warning">
+              <strong>Warning!</strong> Better check yourself, you're not looking too good.
+            </div>
+            <div class="alert alert-success">
+              <strong>Warning!</strong> Better check yourself, you're not looking too good.
+            </div>
+            <div class="alert alert-info">
+              <strong>Warning!</strong> Better check yourself, you're not looking too good.
+            </div>
+            <div class="alert alert-danger">
+              <strong>Warning!</strong> Better check yourself, you're not looking too good.
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
 
 
-<a href="/courses">My Courses</a><br/>
-<a href="/courses/new">Create Courses</a><br/>
+    <div id="newCourseModal" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h4 class="panel-title"><i class="glyphicon glyphicon-edit"></i> New TeachBack Course</h4>
+          </div>
+          <div class="panel-body">
+            <div class="col-sm-5">
+              <div class="panel panel-primary">
+                <div class="panel-heading">
+                  <h4 class="panel-title"><i class="glyphicon glyphicon-plus"></i> Enroll in Existing Course</h4>
+                </div>
+                <div class="panel-body">
+                  <div class="input-group">
+                    <span class="input-group-addon">PIN</span>
+                    <input type="text" class="form-control" placeholder="7-Digit Code">
+                  </div>
+                  
+                  <br>
+                  <div class="pageHolder">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i> Close</button>
+                    <a href="#" id="updateButton" class="btn btn-primary btn-large"> <span class="glyphicon glyphicon-send"></span> Enroll</a>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-7">
+              <div class="panel panel-primary">
+                <div class="panel-heading">
+                  <h4 class="panel-title"><i class="glyphicon glyphicon-edit"></i> Or Create New Course</h4>
+                </div>
+                <div class="panel-body">
+                  <div class="input-group">
+                    <span class="input-group-addon">Title</span>
+                    <input type="text" class="form-control" placeholder="">
+                  </div>
+                  <div class="input-group">
+                    <span class="input-group-addon">Code</span>
+                    <input type="text" class="form-control" placeholder="Eg. CS177">
+                  </div>
+                  <div class="input-group">
+                    <span class="input-group-addon">Lecture Time</span>
+                    <input type="text" class="form-control" placeholder="Eg. 10:00-11:20">
+                  </div>
+                  <div class="input-group">
+                    <span class="input-group-addon">Lecture Days</span>
+                    <input type="text" class="form-control" placeholder="Eg. Mon,Tue,Thur">
+                  </div>
+                  <div class="input-group">
+                    <span class="input-group-addon">Start Date</span>
+                    <input type="date" class="form-control">
+                  </div>
+                  <div class="input-group">
+                    <span class="input-group-addon">End Date</span>
+                    <input type="date" class="form-control">
+                  </div>
+                  <div class="input-group">
+                    <span class="input-group-addon">School</span>
+                    <input type="text" class="form-control" placeholder="">
+                  </div>
+                  <div class="input-group">
+                    <span class="input-group-addon">Instructor</span>
+                    <input type="text" class="form-control" placeholder="">
+                  </div>
+                  <br>
+                  <div class="pageHolder">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i> Close</button>
+                    <a href="#" id="updateButton" class="btn btn-primary btn-large"><span class="glyphicon glyphicon-send"></span> Create</a>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    
+  </div>
+
+
 

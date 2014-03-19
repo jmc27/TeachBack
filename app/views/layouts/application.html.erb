@@ -1,29 +1,17 @@
 <!DOCTYPE html>
 <html lang = "en">
-<p class="navbar-text pull-right">
-<% if user_signed_in? %>
-  Logged in as <strong><%= current_user.email %></strong>.
-  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-<% else %>
-  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-<% end %>
+
 <head>
-  <meta charset = "utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/teachback.css" rel="stylesheet">
   <title>TeachBack</title>
-  <%= favicon_link_tag 'favicon.ico' %>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  
+
+  <!-- <%= javascript_include_tag "all" %>-->
   <%= csrf_meta_tags %>
-  
-  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+  <%= stylesheet_link_tag "teachback" %>
+  <script src="https://code.jquery.com/jquery.js"></script>
 </head>
 <body>
   
@@ -33,8 +21,46 @@
 <% if alert %>
   <p class="alert alert-error"><%= alert %></p>
 <% end %>
-
+<p class="navbar-text pull-right">
+  <% if user_signed_in? %>
+    Logged in as <strong><%= current_user.email %></strong>.
+    <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+    <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+  <% else %>
+    <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+    <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+  <% end %>
 <%= yield %>
+
+</p>
+
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<br><hr>
+<footer class="bs-docs-footer" role="contentinfo">
+    <div class="container">
+      <div class = "row">
+        <ul class="bs-docs-footer-links muted">
+          <li>TeachBack v0.0.1</li>
+          <li>&middot;</li>
+          <li><a href="#">About</a></li>
+          <li>&middot;</li>
+          <li><a href="#">Help</a></li>
+          <li>&middot;</li>
+          <li><a href="#">Contact Us</a></li>
+          <li>&middot;</li>
+          <li>&copy; TeachBack 2014</li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+
+<script>
+$(function(){
+$('#myCarousel').carousel();
+});
+</script>
+
 
 </body>
 </html>
