@@ -17,7 +17,7 @@ TeachBack::Application.routes.draw do
   resources :users do
     resources :course_enrollments
     #HAVE TO DECIDE HERE OR SEPERATE
-    #resources :courses
+    resources :courses
   end
 
   resources :latest_feedbacks
