@@ -7,7 +7,7 @@ class CoursesController < ApplicationController
 	#GET /courses
 
 	def index
-		@owned_courses = Course.where(:owner_id => @user.id)
+		redirect_to user_root_path
 	end
 
 	#GET courses/:id
