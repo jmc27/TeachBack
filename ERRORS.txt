@@ -1,0 +1,2 @@
+Error Log:
+Remember Me checkbox non functional
