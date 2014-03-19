@@ -1,51 +1,50 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
 
 User.delete_all
 Course.delete_all
 CourseEnrollment.delete_all
 
-User.create(firstname: "John",
-			lastname: "Smith",
+puts "Create 3 users ...."
+jsmith = User.create(first_name: "John",
+			last_name: "Smith",
 			username: "jsmith",
-			password: "letmein",
-			email: "jsmith@email.com",
-			email_verified: true)
+			password: "jsmith2014",
+			email: "jsmith@email.com")
 
-User.create(firstname: "Mary",
-			lastname: "Jane",
+mjane = User.create(first_name: "Mary",
+			last_name: "Jane",
 			username: "mjane",
-			password: "password",
-			email: "mjane@email.com",
-			email_verified: true)
+			password: "mjane2014",
+			email: "mjane@email.com")
 
-User.create(firstname: "Bob",
-			lastname: "Johnson",
+bjohn = User.create(first_name: "Bob",
+			last_name: "Johnson",
 			username: "bjohn",
-			password: "000000",
-			email: "bjohn@email.com",
-			email_verified: false)
+			password: "bjohn2014",
+			email: "bjohn@email.com")
 
 @user = User.where(username: "jsmith").first
 
-@user.created_courses.create(title: "Intro to CS",
-							course_code: "aaaa",
-							teacher_pin: "abc123",
-							lecture_day_time: "MW 12-2",
+puts "Create a course ..."
+Course.create(title: "Intro to CS",
+							code: "aaaa",
+							owner_id: @user.id,
+							instructor_pin: 1231453,
+							student_pin: 4349493,
+							lecture_days: "M,W,F",
+							lecture_time: "10:00-10:50",
+							start_date: Date.new(2014,1,14),
+							end_date: Date.new(2014,5,11),
+							semester: "Spring 2014",
 							school: "Brandeis",
-							semester: "Spring",
 							location: "Volen 101",
-							instructor_id: @user.id,
-							instructor_name: "#{@user.firstname} #{@user.lastname}")
-@course = Course.where(course_code: "aaaa").first
+							instructor: "#{@user.first_name} #{@user.last_name}")
+@course = Course.where(code: "aaaa").first
 
 @user = User.where(username: "mjane").first
 
+puts "Create 2 course_enrollements for Mary Jane ..."
 CourseEnrollment.create(user: @user, 
 						course: @course, 
 						enrollment_type: "Student")
@@ -54,5 +53,7 @@ CourseEnrollment.create(user: @user,
 
 CourseEnrollment.create(user: @user,
 						course: @course,
-						enrollment_type: "TA")
+						enrollment_type: "Instructor")
+
+puts ".... DONE!"
 						
