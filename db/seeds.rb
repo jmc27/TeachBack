@@ -10,39 +10,40 @@ User.delete_all
 Course.delete_all
 CourseEnrollment.delete_all
 
-User.create(firstname: "John",
-			lastname: "Smith",
+jsmith = User.create(first_name: "John",
+			last_name: "Smith",
 			username: "jsmith",
-			password: "letmein",
-			email: "jsmith@email.com",
-			email_verified: true)
+			password: "letmein2014",
+			email: "jsmith@email.com")
 
-User.create(firstname: "Mary",
-			lastname: "Jane",
+mjane = User.create(first_name: "Mary",
+			last_name: "Jane",
 			username: "mjane",
 			password: "password",
-			email: "mjane@email.com",
-			email_verified: true)
+			email: "mjane@email.com")
 
-User.create(firstname: "Bob",
-			lastname: "Johnson",
+bjohn = User.create(first_name: "Bob",
+			last_name: "Johnson",
 			username: "bjohn",
-			password: "000000",
-			email: "bjohn@email.com",
-			email_verified: false)
+			password: "0000002014",
+			email: "bjohn@email.com")
 
 @user = User.where(username: "jsmith").first
 
-@user.created_courses.create(title: "Intro to CS",
-							course_code: "aaaa",
-							teacher_pin: "abc123",
-							lecture_day_time: "MW 12-2",
+Course.create(title: "Intro to CS",
+							code: "aaaa",
+							owner_id: @user.id,
+							instructor_pin: "abc123",
+							student_pin: "abc124",
+							lecture_days: "M,W,F",
+							lecture_time: "10:00-10:50",
+							start_date: Date.new(2014,1,14),
+							end_date: Date.new(2014,5,11),
+							semester: "Spring 2014",
 							school: "Brandeis",
-							semester: "Spring",
 							location: "Volen 101",
-							instructor_id: @user.id,
-							instructor_name: "#{@user.firstname} #{@user.lastname}")
-@course = Course.where(course_code: "aaaa").first
+							instructor: "#{@user.first_name} #{@user.last_name}")
+@course = Course.where(code: "aaaa").first
 
 @user = User.where(username: "mjane").first
 
@@ -54,5 +55,5 @@ CourseEnrollment.create(user: @user,
 
 CourseEnrollment.create(user: @user,
 						course: @course,
-						enrollment_type: "TA")
+						enrollment_type: "Instructor")
 						
