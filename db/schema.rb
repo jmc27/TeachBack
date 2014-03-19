@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20140313183719) do
     t.string  "instructor"
     t.integer "instructor_pin"
     t.integer "student_pin"
+    t.string  "location"
   end
 
   create_table "feedbacks", force: true do |t|
@@ -158,9 +159,11 @@ ActiveRecord::Schema.define(version: 20140313183719) do
     t.datetime "updated_at"
     t.string   "first_name"
     t.string   "last_name"
+    t.string   "username"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["username"], name: "index_users_on_username", unique: true
 
 end
