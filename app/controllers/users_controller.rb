@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user
+  before_action :get_courses
 
   def show
   end
@@ -22,11 +23,15 @@ class UsersController < ApplicationController
   	user_path(current_user)
   end
 
-  protected
-
   #Allow additional parameters
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:account_update) << :first_name
     devise_parameter_sanitizer.for(:account_update) << :last_name
   end
+
+  #Gets the courses for a given user
+  def get_courses
+    @courses = @user.courses
+    @owned_courses = Course.where(:owner_id => @user.id)
+  end  
 end
