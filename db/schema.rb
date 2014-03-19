@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(version: 20140319163900) do
     t.integer  "user_id"
     t.integer  "course_id"
     t.string   "enrollment_type"
-    t.string   "semester"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
