@@ -17,7 +17,7 @@
           <li><a href="editProfile.html"><i class="glyphicon glyphicon-edit"></i> Edit Profile</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right rpad">
-          <li><a href="dashboard.html" id="userProfile"><i class="glyphicon glyphicon-user"></i> John Smith</a></li>
+          <li><a href="dashboard.html" id="userProfile"><i class="glyphicon glyphicon-user"></i><%= @user.username %></a></li>
           <li><a href="index.html" id="userLogoutButton" title="Log Out of TeachBack"><i class="glyphicon glyphicon-log-out"> </i></a></li>
         </ul>
     	</div>
@@ -61,8 +61,9 @@
                 <h4 class="list-group-item-heading">
                   <%= c.title %>
                 </h4>
-                <p class="list-group-item-text">Mandel G03: T,F 10:00 - 11:50</p>
-                <p class="list-group-item-text">Instructor: Timothy Hickey</p>
+                <p class="list-group-item-text">
+                  <%= c.location %>: <%= c.lecture_days %> <%= c.lecture_time %></p>
+                <p class="list-group-item-text">Instructor: <%= c.instructor %></p>
               </a>
               
 

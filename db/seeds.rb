@@ -1,9 +1,9 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 
-User.delete_all
-Course.delete_all
-CourseEnrollment.delete_all
+User.destroy_all
+Course.destroy_all
+CourseEnrollment.destroy_all
 
 puts "Create 3 users ...."
 jsmith = User.create(first_name: "John",
@@ -29,6 +29,19 @@ bjohn = User.create(first_name: "Bob",
 puts "Create a course ..."
 Course.create(title: "Intro to CS",
 							code: "aaaa",
+							owner_id: @user.id,
+							instructor_pin: 1231453,
+							student_pin: 4349493,
+							lecture_days: "M,W,F",
+							lecture_time: "10:00-10:50",
+							start_date: Date.new(2014,1,14),
+							end_date: Date.new(2014,5,11),
+							semester: "Spring 2014",
+							school: "Brandeis",
+							location: "Volen 101",
+							instructor: "#{@user.first_name} #{@user.last_name}")
+Course.create(title: "Advanced Programing Techniques",
+							code: "bbbb",
 							owner_id: @user.id,
 							instructor_pin: 1231453,
 							student_pin: 4349493,
