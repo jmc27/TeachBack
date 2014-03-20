@@ -106,7 +106,7 @@ b, strong{
         height: 600px;  
     } 
     #wrapper {
-        padding-left: 600px;
+        padding-left: 250px;
     }
 
     .page-wrapper {
@@ -246,9 +246,7 @@ hr {
     border-color: #DDD;
     
 }
-li{
-    height: 100px;
-}
+
 .scrollable {
             height: 500px;
             overflow: auto;
