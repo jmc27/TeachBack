@@ -48,13 +48,12 @@
         <div class= "row">
         <div class="panel panel-primary">
           <div class="panel-heading">
-            <h4 class="panel-title"><i class="glyphicon glyphicon-th-list"></i> My Courses</h4>
+            <h4 class="panel-title"><i class="glyphicon glyphicon-th-list"></i> My Current Courses
             <button role="button" href="#newCourseModal" class="pull-right btn btn-default" data-toggle="modal"><i class="glyphicon glyphicon-edit"> 
               <a href="/courses/new">Create Courses</a></i></button></h4>
           </div>
-          <% @owned_courses.each do |c| %>
-
           <div class="panel-body">
+          <% @courses.each do |c| %>
             <div id="currentCourses" class="list-group">
               
                 
@@ -69,39 +68,13 @@
               
 
             </div>
-          </div>
           <% end %>
+          </div>
         </div>
       </div>
-      <div class = "row">
-      <div class = "panel panel-primary">
-        <div class="panel-heading">
-            <h4 class="panel-title"><i class="glyphicon glyphicon-th-list"></i> Current Course Enrollments </h4>
-            <button role="button" href="#newCourseModal" class="pull-right btn btn-default" data-toggle="modal"><i class="glyphicon glyphicon-edit"> 
-              <a href="/courses/new"> Courses</a></i></button></h4>
-          </div>
-          <% @courses.each do |c| %>
-
-          <div class="panel-body">
-            <div id="currentCourses" class="list-group">
-              
-                
-                <a href="coursePage_Instr.html" class="list-group-item">
-                <h4 class="list-group-item-heading">
-                  <%= c.title %>
-                </h4>
-                <p class="list-group-item-text">
-                  <%= c.location %>: <%= c.lecture_days %> <%= c.lecture_time %></p>
-                <p class="list-group-item-text">Instructor: <%= c.instructor %></p>
-              </a>
-              
-
-            </div>
-          </div>
-          <% end %>
+      
       </div>
-    </div>
-  </div>
+
       <div class="col-md-4 scrollable">
         <div class="panel panel-primary">
           <div class="panel-heading">
