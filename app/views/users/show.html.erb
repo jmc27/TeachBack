@@ -18,7 +18,7 @@
         </ul>
         <ul class="nav navbar-nav navbar-right rpad">
           <li><a href="dashboard.html" id="userProfile"><i class="glyphicon glyphicon-user"></i><%= @user.username %></a></li>
-          <li><%= link_to "", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+          <li><%= link_to '', destroy_user_session_path, method: :delete, :class => "glyphicon glyphicon-log-out"  %> 
           </i></li>
         </ul>
     	</div>
