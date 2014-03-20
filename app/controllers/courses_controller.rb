@@ -20,6 +20,19 @@ class CoursesController < ApplicationController
 		@course = Course.new
 	end
 
+	def newPIN
+		allPins = []
+		Course.select('instructor_pin','student_pin').each do |course|
+			allPins.push course.instructor_pin
+			allPins.push course.student_pin
+		end
+		pin = 1000000 + Random.rand(10000000 - 1000000)
+		while allPins.include? pin
+			pin = 1000000 + Random.rand(10000000 - 1000000)
+		end
+		pin
+	end
+
 	#POST /courses
 	#POST /courses.json
 
@@ -52,7 +65,7 @@ class CoursesController < ApplicationController
 
 # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params.require(:course).permit(:title)
+      params.require(:course).permit(:title, :instructor, :lecture_days, :lecture_time, :location)
     end
 
 end

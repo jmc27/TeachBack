@@ -17,8 +17,9 @@
           <li><a href="editProfile.html"><i class="glyphicon glyphicon-edit"></i> Edit Profile</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right rpad">
-          <li><a href="dashboard.html" id="userProfile"><i class="glyphicon glyphicon-user"></i> John Smith</a></li>
-          <li><a href="index.html" id="userLogoutButton" title="Log Out of TeachBack"><i class="glyphicon glyphicon-log-out"> </i></a></li>
+          <li><a href="dashboard.html" id="userProfile"><i class="glyphicon glyphicon-user"></i><%= @user.username %></a></li>
+          <li><%= link_to '', destroy_user_session_path, method: :delete, :class => "glyphicon glyphicon-log-out"  %> 
+          </i></li>
         </ul>
     	</div>
     </nav>
@@ -28,11 +29,14 @@
     <div class="container tpad bpad page-wrapper">
       <div class="panel dashPanel">
         <img class="dashPicture img-circle" id="dashImage" src="http://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/twDq00QDud4/s120-c/photo.jpg" alt="John Smith">
-        <div class="dashName" id="dashFullName"><small>John Smith</small></div>
+
+        <div class="dashName" id="dashFullName"><small>
+          <%= @user.first_name %> <%= @user.last_name %>
+        </small></div>
         <div class="dashCred">
-          <p> <i class="glyphicon glyphicon-envelope" id="dashEmail"></i> jsmith@brandeis.edu
+          <p> <i class="glyphicon glyphicon-envelope" id="dashEmail"></i> <%= @user.email %>
             <br
-            /> <i class="glyphicon glyphicon-user" id="dashUserName"></i> jsmith
+            /> <i class="glyphicon glyphicon-user" id="dashUserName"></i> <%= @user.username %>
         </div>
       </div>
     </div>
@@ -42,32 +46,36 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-8 scrollable">
+        <div class= "row">
         <div class="panel panel-primary">
           <div class="panel-heading">
             <h4 class="panel-title"><i class="glyphicon glyphicon-th-list"></i> My Current Courses
             <button role="button" href="#newCourseModal" class="pull-right btn btn-default" data-toggle="modal"><i class="glyphicon glyphicon-edit"> 
               <a href="/courses/new">Create Courses</a></i></button></h4>
           </div>
-
           <div class="panel-body">
+          <% @courses.each do |c| %>
             <div id="currentCourses" class="list-group">
-              <% @owned_courses.each do |c| %>
+              
                 
-                <a href="coursePage_Instr.html" class="list-group-item">
+                <span class="list-group-item">
                 <h4 class="list-group-item-heading">
                   <%= link_to c.title, course_path(c) %>
                 </h4>
-                <p class="list-group-item-text">Mandel G03: T,F 10:00 - 11:50</p>
-                <p class="list-group-item-text">Instructor: Timothy Hickey</p>
-              </a>
-              <% end %>
-              
+                <p class="list-group-item-text">
+                  <%= c.location %>: <%= c.lecture_days %> <%= c.lecture_time %></p>
+                <p class="list-group-item-text">Instructor: <%= c.instructor %></p>
+              </span>
               
 
             </div>
+          <% end %>
           </div>
         </div>
       </div>
+      
+      </div>
+
       <div class="col-md-4 scrollable">
         <div class="panel panel-primary">
           <div class="panel-heading">
@@ -189,6 +197,6 @@
     
   </div>
 
-    <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+    
 
 

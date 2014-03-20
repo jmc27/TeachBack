@@ -32,6 +32,6 @@ class UsersController < ApplicationController
   #Gets the courses for a given user
   def get_courses
     @courses = @user.courses
-    @owned_courses = Course.where(:owner_id => @user.id)
+    @courses += Course.where(:owner_id => @user.id)
   end  
 end
