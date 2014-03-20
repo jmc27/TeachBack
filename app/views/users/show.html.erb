@@ -57,14 +57,14 @@
             <div id="currentCourses" class="list-group">
               
                 
-                <a href="coursePage_Instr.html" class="list-group-item">
+                <span class="list-group-item">
                 <h4 class="list-group-item-heading">
-                  <%= c.title %>
+                  <%= link_to c.title, course_path(c) %>
                 </h4>
                 <p class="list-group-item-text">
                   <%= c.location %>: <%= c.lecture_days %> <%= c.lecture_time %></p>
                 <p class="list-group-item-text">Instructor: <%= c.instructor %></p>
-              </a>
+              </span>
               
 
             </div>
