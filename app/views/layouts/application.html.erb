@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang = "en">
-
 <head>
   <title>TeachBack</title>
   
 
-  <!-- <%= javascript_include_tag "all" %>-->
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+
   <%= csrf_meta_tags %>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
@@ -21,7 +21,7 @@
 <% if alert %>
   <p class="alert alert-error"><%= alert %></p>
 <% end %>
-<p class="navbar-text pull-right">
+<div class="navbar-text pull-right">
   <% if user_signed_in? %>
     Logged in as <strong><%= current_user.email %></strong>.
     <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
@@ -32,7 +32,7 @@
   <% end %>
 <%= yield %>
 
-</p>
+</div>
 
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 <br><hr>
