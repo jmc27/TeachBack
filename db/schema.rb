@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140319163900) do
+ActiveRecord::Schema.define(version: 20140309182319) do
 
   create_table "attendances", force: true do |t|
     t.integer  "lecture_id"
@@ -34,15 +34,16 @@ ActiveRecord::Schema.define(version: 20140319163900) do
     t.integer "owner_id"
     t.string  "title"
     t.string  "code"
-    t.string  "lecture_time"
+    t.string  "lecture_start_time"
+    t.string  "lecture_end_time"
     t.string  "lecture_days"
     t.date    "start_date"
     t.date    "end_date"
     t.string  "school"
     t.string  "instructor"
+    t.string  "location"
     t.integer "instructor_pin"
     t.integer "student_pin"
-    t.string  "location"
     t.string  "semester"
   end
 
@@ -145,6 +146,9 @@ ActiveRecord::Schema.define(version: 20140319163900) do
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "username"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -155,9 +159,6 @@ ActiveRecord::Schema.define(version: 20140319163900) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "username"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

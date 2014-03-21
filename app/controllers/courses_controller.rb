@@ -20,17 +20,22 @@ class CoursesController < ApplicationController
 		@course = Course.new
 	end
 
-	def newPIN
+	def newPINS
 		allPins = []
 		Course.select('instructor_pin','student_pin').each do |course|
 			allPins.push course.instructor_pin
 			allPins.push course.student_pin
 		end
-		pin = 1000000 + Random.rand(10000000 - 1000000)
-		while allPins.include? pin
+		pins = []
+		while pins.size < 2
 			pin = 1000000 + Random.rand(10000000 - 1000000)
+			while allPins.include? pin
+				pin = 1000000 + Random.rand(10000000 - 1000000)
+			end
+			pins.push pin
+			allPins.push pin
 		end
-		pin
+		return pins
 	end
 
 	#POST /courses

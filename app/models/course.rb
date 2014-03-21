@@ -9,6 +9,5 @@ class Course < ActiveRecord::Base
 
 	#validates :user_id, :title, :course_code, :teacher_pin, :student_pin,
 	#			:ta_pin, presence: true
-	#validates :course_code, :teacher_pin, :student_pin,
-	#			:ta_pin, uniqueness: true
+	validates :instructor_pin, :student_pin, uniqueness: true
 end
