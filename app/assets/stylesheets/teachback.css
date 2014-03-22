@@ -5,8 +5,12 @@ html, body{
     line-height: 1.7;
     background-color: #eeefe9;
 }
-h1, h2, h3, h4{
+h1, h2, h3{
     font-family: 'Abel', sans-serif;   
+}
+h4{
+    font-family: 'Abel', sans-serif;
+    font-weight: 600;
 }
 b, strong{
     font-weight: 400;
@@ -72,10 +76,7 @@ b, strong{
     min-width: 100%;
     height: auto;
 }
-.logins{
-    top: 10px;
-    
-}
+
 .gravatar{
     height:auto; 
     width:auto; 
@@ -114,7 +115,7 @@ b, strong{
     }  
 }
 .tpad{
-    padding-top: 70px;
+    padding-top: 20px;
 }
 .rpad{
     padding-right: 20px;

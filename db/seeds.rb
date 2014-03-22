@@ -5,7 +5,7 @@ User.destroy_all
 Course.destroy_all
 CourseEnrollment.destroy_all
 
-puts "Create 3 users ...."
+puts "Creating 3 users ...."
 jsmith = User.create(first_name: "John",
 			last_name: "Smith",
 			username: "jsmith",
@@ -27,14 +27,15 @@ bjohn = User.create(first_name: "Bob",
 @user = User.where(username: "jsmith").first
 @user2 = User.where(username: "bjohn").first
 
-puts "Create courses ..."
+puts "Creating two courses ..."
 Course.create(title: "Intro to CS",
 							code: "COSI 101",
 							owner_id: @user.id,
 							instructor_pin: 1231453,
 							student_pin: 4349493,
 							lecture_days: "M,W,F",
-							lecture_time: "10:00-10:50",
+							lecture_start_time: "10:00",
+							lecture_end_time: "10:50",
 							start_date: Date.new(2014,1,14),
 							end_date: Date.new(2014,5,11),
 							semester: "Spring 2014",
@@ -47,26 +48,34 @@ Course.create(title: "Advanced Programing Techniques",
 							instructor_pin: 7867567, #Now will validated as unique in the model
 							student_pin: 4349495, #Unique
 							lecture_days: "M,W,F",
-							lecture_time: "10:00-10:50",
+							lecture_start_time: "12:30",
+							lecture_end_time: "13:50",
 							start_date: Date.new(2014,1,14),
 							end_date: Date.new(2014,5,11),
 							semester: "Spring 2014",
 							school: "Brandeis",
 							location: "Volen 101",
 							instructor: "#{@user2.first_name} #{@user2.last_name}")
-@course = Course.where(code: "aaaa").first
+@course = Course.where(code: "COSI 101").first
 
 @user = User.where(username: "mjane").first
 
-puts "Create 2 course_enrollements for Mary Jane ..."
+puts "Enrolling Mary Jane in two courses ..."
 CourseEnrollment.create(user: @user, 
 						course: @course, 
 						enrollment_type: "Student")
-
-@user = User.where(username: "bjohn").first
-
 CourseEnrollment.create(user: @user,
 						course: @course,
 						enrollment_type: "Instructor")
+
+@user = User.where(username: "bjohn").first
+@course = Course.where(code: "COSI 22").first
+puts "Enrolling Bob Johson in two courses ..."
+CourseEnrollment.create(user: @user,
+						course: @course,
+						enrollment_type: "Instructor")
+CourseEnrollment.create(user: @user,
+						course: @course,
+						enrollment_type: "Student")
 
 puts ".... DONE!"

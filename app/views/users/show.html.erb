@@ -63,7 +63,7 @@
                   <%= link_to c.title, course_path(c) %>
                 </h4>
                 <p class="list-group-item-text">
-                  <%= c.location %>: <%= c.lecture_days %> <%= c.lecture_time %></p>
+                  <%= c.location %>: <%= c.lecture_days %> <%= c.lecture_start_time %>-<%= c.lecture_end_time %></p>
                 <p class="list-group-item-text">Instructor: <%= c.instructor %></p>
               </span>
               
