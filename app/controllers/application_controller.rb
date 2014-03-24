@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_updated_account_path_for(resource)
-  	user_path(current_user)
+  	edit_user_registration_path
   end
 
   protected
@@ -21,5 +21,10 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:account_update) << :last_name
     devise_parameter_sanitizer.for(:sign_up) << :first_name
     devise_parameter_sanitizer.for(:sign_up) << :last_name
+    devise_parameter_sanitizer.for(:sign_up) << :username
+    devise_parameter_sanitizer.for(:sign_up) << :email
+    devise_parameter_sanitizer.for(:account_update) << :username
+    devise_parameter_sanitizer.for(:sign_in) << :email
   end
+
 end

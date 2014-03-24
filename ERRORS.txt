@@ -1,2 +1,5 @@
 Error Log:
 Remember Me checkbox non functional
+DEVISE ISSUE: Originally doesn't include usernames
+	Sign Up doesn't collect/save username
+	Change Password under Edit Profile isn't working

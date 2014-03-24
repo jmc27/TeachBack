@@ -1,0 +1,4 @@
+<ul class="nav navbar-nav navbar-right rpad">
+  <li><%= link_to user.username, user_path(user), class: "glyphicon glyphicon-user"%></li>
+  <li><%= link_to '', destroy_user_session_path, method: :delete, class: "glyphicon glyphicon-log-out"  %></li>
+</ul>

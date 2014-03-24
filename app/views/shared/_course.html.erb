@@ -1,0 +1,10 @@
+<div class="list-group">
+  <span class="list-group-item">
+    <h4 class="list-group-item-heading">
+      <%= link_to course.title, course_path(course) %>
+    </h4>
+    <p class="list-group-item-text">
+      <%= course.location %>: <%= course.lecture_days %> <%= course.lecture_start_time %>-<%= course.lecture_end_time %></p>
+    <p class="list-group-item-text">Instructor: <%= course.instructor %></p>
+  </span>
+</div>
