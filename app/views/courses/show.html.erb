@@ -68,10 +68,10 @@
           <div class="panel-body">
             <div id="currentCourses" class="list-group">
             	<% @course.lectures.each do |l| %>
-              <a href="engagedPage_Student.html" class="list-group-item">
+              <a href=<%="/courses/#{@course.id}/lectures/#{l.id}"%> class="list-group-item">
                 <h4 class="list-group-item-heading"><%= l.title %></h4>
-                <strong class="list-group-item-text">Tue Mar 18</strong>
-                <p class="list-group-item-text alert">Read Sandy Metz’s Rules. Deliverable: Write a blog post reflecting on them, and whether plan to adopt them rigorously (and why or why not).</p>
+                <strong class="list-group-item-text"><%= l.date %></strong>
+                <p class="list-group-item-text alert"><%= l.info %></p>
               </a>
              
               <% end %>
