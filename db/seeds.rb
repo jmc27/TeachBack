@@ -18,19 +18,18 @@ mjane = User.create(first_name: "Mary",
 			password: "mjane2014",
 			email: "mjane@email.com")
 
-bjohn = User.create(first_name: "Bob",
-			last_name: "Johnson",
-			username: "bjohn",
-			password: "bjohn2014",
-			email: "bjohn@email.com")
+bjohn = User.create(first_name: "William",
+			last_name: "Tarimo",
+			username: "wtarimo",
+			password: "wtarimo2014",
+			email: "wtarimo@brandeis.edu")
 
 @user = User.where(username: "jsmith").first
-@user2 = User.where(username: "bjohn").first
+@user2 = User.where(username: "wtarimo").first
 
 puts "Creating two courses ..."
 Course.create(title: "Intro to CS",
 							code: "COSI 101",
-							owner_id: @user.id,
 							instructor_pin: 1231453,
 							student_pin: 4349493,
 							lecture_days: "M,W,F",
@@ -44,7 +43,6 @@ Course.create(title: "Intro to CS",
 							instructor: "#{@user.first_name} #{@user.last_name}")
 Course.create(title: "Advanced Programing Techniques",
 							code: "COSI 22",
-							owner_id: @user2.id,
 							instructor_pin: 7867567, #Now will validated as unique in the model
 							student_pin: 4349495, #Unique
 							lecture_days: "M,W,F",
@@ -68,14 +66,13 @@ CourseEnrollment.create(user: @user,
 						course: @course,
 						enrollment_type: "Instructor")
 
-@user = User.where(username: "bjohn").first
-@course = Course.where(code: "COSI 22").first
-puts "Enrolling Bob Johson in two courses ..."
-CourseEnrollment.create(user: @user,
+@course2 = Course.where(code: "COSI 22").first
+puts "Enrolling William in two courses ..."
+CourseEnrollment.create(user: @user2,
 						course: @course,
 						enrollment_type: "Instructor")
-CourseEnrollment.create(user: @user,
-						course: @course,
+CourseEnrollment.create(user: @user2,
+						course: @course2,
 						enrollment_type: "Student")
 
 puts ".... DONE!"

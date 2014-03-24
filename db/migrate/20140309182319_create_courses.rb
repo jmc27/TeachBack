@@ -1,7 +1,6 @@
 class CreateCourses < ActiveRecord::Migration
   def change
     create_table :courses do |t|
-		t.integer :owner_id
 		t.string :title
 		t.string :code
 		t.string :lecture_start_time
@@ -16,6 +15,7 @@ class CreateCourses < ActiveRecord::Migration
 		t.integer :student_pin
 		t.string :semester
 
+		t.timestamps
     end
   end
 end

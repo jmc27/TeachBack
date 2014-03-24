@@ -12,7 +12,12 @@ class CoursesController < ApplicationController
 
 	#GET courses/:id
 	def show
-		
+		enrollment = CourseEnrollment.find_by(user_id:@user.id,course_id:@course.id)
+		if enrollment.enrollment_type == "Student"
+			render "show_student"
+		else
+			render "show_instructor"
+		end
 	end
 
 	#GET courses/new

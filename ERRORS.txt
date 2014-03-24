@@ -3,3 +3,20 @@ Remember Me checkbox non functional
 DEVISE ISSUE: Originally doesn't include usernames
 	Sign Up doesn't collect/save username
 	Change Password under Edit Profile isn't working
+
+Ask about Time class & attributes
+
+
+NOTES:
+class SentimentManager
+	def self.sentimentList(lectureId)
+
+	def self.logSentiment(lectureId,sentId,userId)
+
+	def self.getCurrentSummary(lectureId) > [[sentId:count], ...]
+	def self.sentimentHistory()
+
+
+
+class SentimentHistory
+
