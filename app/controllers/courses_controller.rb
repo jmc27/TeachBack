@@ -46,15 +46,18 @@ class CoursesController < ApplicationController
     @course.owner_id = @user.id
 
     respond_to do |format|
-      if @course.save
-        format.html { redirect_to @course, notice: 'Course was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @course }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @course.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+	      if @course.save
+	        format.html { redirect_to @course, notice: 'Course was successfully created.' }
+	        format.json { render action: 'show', status: :created, location: @course }
+	      else
+	        format.html { render action: 'new' }
+	        format.json { render json: @course.errors, status: :unprocessable_entity }
+	      end
+	    end
+	  end
+  	def get_lectures
+		@lectures = Lecture.where(:course_id => @course.id)
+	end
 
 	private
 
