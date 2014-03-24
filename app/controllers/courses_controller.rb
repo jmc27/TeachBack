@@ -55,9 +55,6 @@ class CoursesController < ApplicationController
 	      end
 	    end
 	  end
-  	def get_lectures
-		@lectures = Lecture.where(:course_id => @course.id)
-	end
 
 	private
 
