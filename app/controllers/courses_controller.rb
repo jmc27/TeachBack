@@ -13,10 +13,10 @@ class CoursesController < ApplicationController
 	#GET courses/:id
 	def show
 		enrollment = CourseEnrollment.find_by(user_id:@user.id,course_id:@course.id)
-		if enrollment.enrollment_type == "Student"
-			render "show_student"
-		else
+		if enrollment.enrollment_type == "Instructor"
 			render "show_instructor"
+		else
+			render "show_student"
 		end
 	end
 
@@ -48,12 +48,15 @@ class CoursesController < ApplicationController
 
   def create
     @course = Course.new(course_params)
-    @course.owner_id = @user.id
+    pins = newPINS
+    @course.instructor_pin = pins[0]
+    @course.student_pin = pins[1]
 
     respond_to do |format|
       if @course.save
-        format.html { redirect_to @course, notice: 'Course was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @course }
+      	CourseEnrollment.create(user: @user, course: @course, enrollment_type: "Instructor")
+        format.html { redirect_to @user, notice: 'Course was successfully created.' }
+        format.json { render action: 'users#show', status: :created, location: @course }
       else
         format.html { render action: 'new' }
         format.json { render json: @course.errors, status: :unprocessable_entity }
@@ -75,7 +78,7 @@ class CoursesController < ApplicationController
 
 # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params.require(:course).permit(:title, :instructor, :lecture_days, :lecture_time, :location)
+      params.require(:course).permit(:title, :code, :instructor, :lecture_days, :start_date, :end_date, :school, :semester, :lecture_start_time, :lecture_end_time, :location)
     end
 
 end

@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   #Set the current user before anything else
   def set_user
     @user = current_user
+    @course = Course.new
   end
 
   #Route to user page on sign-in

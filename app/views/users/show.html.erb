@@ -35,8 +35,7 @@
             <div class="panel panel-primary">
               <div class="panel-heading">
                 <h4 class="panel-title"><i class="glyphicon glyphicon-th-list"></i> My Current Courses
-                <button role="button" href="#newCourseModal" class="pull-right btn btn-default" data-toggle="modal"><i class="glyphicon glyphicon-edit"> 
-                  <a href="/courses/new">Create Courses</a></i></button></h4>
+                <button role="button" href="#newCourseModal" class="pull-right btn btn-default" data-toggle="modal"><i class="glyphicon glyphicon-edit"></i> New Course</button></h4>
               </div>
               <div class="panel-body">
                 <%= render partial:"shared/course", collection: @user.courses %>
@@ -84,17 +83,21 @@
                       <h4 class="panel-title"><i class="glyphicon glyphicon-plus"></i> Enroll in Existing Course</h4>
                     </div>
                     <div class="panel-body">
+
+                    <%= form_tag(user_course_enrollments_path(@user), method: "post") do %>
                       <div class="input-group">
                         <span class="input-group-addon">PIN</span>
-                        <input type="text" class="form-control" placeholder="7-Digit Code">
+                        <%= text_field_tag(:pin, placeholder="7-Digit Code", class: "form-control") %>
                       </div>
                       
                       <br>
                       <div class="pageHolder">
                         <button type="button" class="btn btn-default" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i> Close</button>
-                        <a href="#" id="updateButton" class="btn btn-primary btn-large"> <span class="glyphicon glyphicon-send"></span> Enroll</a>
+                        <%= button_tag(type: "submit", :class =>"btn btn-primary") do %>
+                        <i class="glyphicon glyphicon-send"> Enroll</i>
+                      <% end %>
                       </div>
-                      
+                    <% end %>
                     </div>
                   </div>
                 </div>
@@ -104,44 +107,60 @@
                       <h4 class="panel-title"><i class="glyphicon glyphicon-edit"></i> Or Create New Course</h4>
                     </div>
                     <div class="panel-body">
+                      <%= form_for(@course) do |f| %>
+
                       <div class="input-group">
                         <span class="input-group-addon">Title</span>
-                        <input type="text" class="form-control" placeholder="">
+                        <%= f.text_field :title,class:"form-control" %>
                       </div>
                       <div class="input-group">
                         <span class="input-group-addon">Code</span>
-                        <input type="text" class="form-control" placeholder="Eg. CS177">
+                        <%= f.text_field :code,class:"form-control",placeholder:"Eg. CS177" %>
                       </div>
                       <div class="input-group">
-                        <span class="input-group-addon">Lecture Time</span>
-                        <input type="text" class="form-control" placeholder="Eg. 10:00-11:20">
+                        <span class="input-group-addon">Lecture Start Time</span>
+                        <%= f.text_field :lecture_start_time,class:"form-control",placeholder:"Eg. 13:00" %>
+                      </div>
+                      <div class="input-group">
+                        <span class="input-group-addon">Lecture End Time</span>
+                        <%= f.text_field :lecture_end_time,class:"form-control",placeholder:"Eg. 14:20" %>
                       </div>
                       <div class="input-group">
                         <span class="input-group-addon">Lecture Days</span>
-                        <input type="text" class="form-control" placeholder="Eg. Mon,Tue,Thur">
+                        <div class="input-group">
+                        <%= f.text_field :lecture_days,class:"form-control",placeholder:"Eg. Mon,Tue,Thur" %>
+                      </div>
+                      </div>
+                      <div class="input-group">
+                        <span class="input-group-addon">Location</span>
+                        <div class="input-group">
+                        <%= f.text_field :location,class:"form-control",placeholder:"Building, Room" %>
+                      </div>
                       </div>
                       <div class="input-group">
                         <span class="input-group-addon">Start Date</span>
-                        <input type="date" class="form-control">
+                        <%= f.date_field :start_date,class:"form-control" %>
                       </div>
                       <div class="input-group">
                         <span class="input-group-addon">End Date</span>
-                        <input type="date" class="form-control">
+                        <%= f.date_field :end_date,class:"form-control" %>
                       </div>
                       <div class="input-group">
                         <span class="input-group-addon">School</span>
-                        <input type="text" class="form-control" placeholder="">
+                        <%= f.text_field :school,class:"form-control"%>
                       </div>
                       <div class="input-group">
                         <span class="input-group-addon">Instructor</span>
-                        <input type="text" class="form-control" placeholder="">
+                        <%= f.text_field :instructor,class:"form-control"%>
                       </div>
                       <br>
                       <div class="pageHolder">
                         <button type="button" class="btn btn-default" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i> Close</button>
-                        <a href="#" id="updateButton" class="btn btn-primary btn-large"><span class="glyphicon glyphicon-send"></span> Create</a>
+                        <%= button_tag(type: "submit", :class =>"btn btn-primary") do %>
+                        <i class="glyphicon glyphicon-send"> Create</i>
+                      <% end %>
                       </div>
-                      
+                    <% end %>
                     </div>
                   </div>
                 </div>
