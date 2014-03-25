@@ -57,15 +57,14 @@
           <% @courses.each do |c| %>
             <div id="currentCourses" class="list-group">
               
-                
-                <span class="list-group-item">
+                <a href=<%="/courses/#{c.id}/"%> class="list-group-item">
                 <h4 class="list-group-item-heading">
-                  <%= link_to c.title, course_path(c) %>
+                  <%= c.title %>
                 </h4>
                 <p class="list-group-item-text">
                   <%= c.location %>: <%= c.lecture_days %> <%= c.lecture_start_time %>-<%= c.lecture_end_time %></p>
                 <p class="list-group-item-text">Instructor: <%= c.instructor %></p>
-              </span>
+              </a>
               
 
             </div>
