@@ -32,18 +32,18 @@
     <div class="row">
       <div class="col-md-8 scrollable">
         <div class= "row">
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-            <h4 class="panel-title"><i class="glyphicon glyphicon-th-list"></i> My Current Courses
-            <button role="button" href="#newCourseModal" class="pull-right btn btn-default" data-toggle="modal"><i class="glyphicon glyphicon-edit"></i> New Course</button></h4>
-          </div>
-          <div class="panel-body">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h4 class="panel-title"><i class="glyphicon glyphicon-th-list"></i> My Current Courses
+              <button role="button" href="#newCourseModal" class="pull-right btn btn-default" data-toggle="modal"><i class="glyphicon glyphicon-edit"></i> New Course</button></h4>
+            </div>
+            <div class="panel-body">
 
-            <%= render partial:"shared/course", collection: @user.courses %>
+              <%= render partial:"shared/course", collection: @user.courses %>
 
+            </div>
           </div>
         </div>
-      </div>
       </div>
 
       <div class="col-md-4 scrollable">
