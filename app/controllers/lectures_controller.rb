@@ -1,5 +1,6 @@
 class LecturesController < ApplicationController
 	before_action :authenticate_user!
+	before_action :set_user
 	before_action :set_course
 	before_action :set_lecture, only: [:show, :edit, :update, :destroy]
 
@@ -34,7 +35,9 @@ class LecturesController < ApplicationController
   end
 
 	private
-
+	def set_user
+		@user = current_user
+	end
 	#Sets current course
 	def set_course
 		@course = Course.find(params[:course_id])

@@ -32,19 +32,21 @@
     <div class="row">
       <div class="col-md-8 scrollable">
         <div class= "row">
-          <div class="panel panel-primary">
-            <div class="panel-heading">
-              <h4 class="panel-title"><i class="glyphicon glyphicon-th-list"></i> My Current Courses
-              <button role="button" href="#newCourseModal" class="pull-right btn btn-default" data-toggle="modal"><i class="glyphicon glyphicon-edit"></i> New Course</button></h4>
-            </div>
-            <div class="panel-body">
 
-              <%= render partial:"shared/course", collection: @user.courses %>
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h4 class="panel-title"><i class="glyphicon glyphicon-th-list"></i> My Current Courses
+            <button role="button" href="#newCourseModal" class="pull-right btn btn-default" data-toggle="modal"><i class="glyphicon glyphicon-edit"></i> New Course</button></h4>
+          </div>
+          <div class="panel-body">
 
-            </div>
+            <%= render partial:"shared/course", collection: @user.courses %>
+
           </div>
         </div>
       </div>
+      </div>
+
 
       <div class="col-md-4 scrollable">
         <div class= "row">
@@ -121,12 +123,21 @@
                   <div class="input-group">
                     <span class="input-group-addon">Code</span>
                     <%= f.text_field :code,class:"form-control",placeholder:"Eg. CS177" %>
+<<<<<<< HEAD
                   </div>
                   <div class="input-group">
                     <span class="input-group-addon">Lecture Start Time</span>
                     <%= f.text_field :lecture_start_time,class:"form-control",placeholder:"Eg. 13:00" %>
                   </div>
                   <div class="input-group">
+=======
+                  </div>
+                  <div class="input-group">
+                    <span class="input-group-addon">Lecture Start Time</span>
+                    <%= f.text_field :lecture_start_time,class:"form-control",placeholder:"Eg. 13:00" %>
+                  </div>
+                  <div class="input-group">
+>>>>>>> courselecture
                     <span class="input-group-addon">Lecture End Time</span>
                     <%= f.text_field :lecture_end_time,class:"form-control",placeholder:"Eg. 14:20" %>
                   </div>
