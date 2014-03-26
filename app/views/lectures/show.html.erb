@@ -5,8 +5,7 @@
 	  <div class="collapse navbar-collapse">
 	    <ul class="nav navbar-nav side-nav">
 	      <li class="active"><%= link_to ' Dashboard', user_path(current_user), class:'navbar-link glyphicon glyphicon-dashboard' %></li>
-	      <li><a href="pastCourses.html"><i class="glyphicon glyphicon-list-alt"></i> Past Courses</a></li>
-	      <li><%= link_to ' Edit Profile', edit_user_registration_path, class:'navbar-link glyphicon glyphicon-edit' %></li>
+	      <li><%= link_to ' My Course', course_path, class:'navbar-link glyphicon glyphicon-edit' %></li>
 	    </ul>
 	    <%= render partial: "shared/user_header", locals: {user: @user} %>
 		</div>
