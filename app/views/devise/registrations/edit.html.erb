@@ -15,9 +15,9 @@
 
     <!--                              USER DASHBOARD                -->
     <div class="container pagepad page-wrapper">
+      <%= render "shared/flash" %>
       <div class="panel dashPanel">
         <%= gravatar_for @user %>
-
         <div class="dashName"><small>
           <%= @user.first_name %> <%= @user.last_name %>
         </small></div>
