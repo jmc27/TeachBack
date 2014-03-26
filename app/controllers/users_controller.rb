@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user
-  before_action :get_courses
 
   def show
   end
@@ -12,6 +11,7 @@ class UsersController < ApplicationController
   #Set the current user before anything else
   def set_user
     @user = current_user
+    @course = Course.new
   end
 
   #Route to user page on sign-in
@@ -27,11 +27,13 @@ class UsersController < ApplicationController
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:account_update) << :first_name
     devise_parameter_sanitizer.for(:account_update) << :last_name
+    devise_parameter_sanitizer.for(:account_update) << :username
+    devise_parameter_sanitizer.for(:account_update) << :email
+    devise_parameter_sanitizer.for(:account_update) << :password
+    devise_parameter_sanitizer.for(:sign_up) << :first_name
+    devise_parameter_sanitizer.for(:sign_up) << :last_name
+    devise_parameter_sanitizer.for(:sign_up) << :username
+    devise_parameter_sanitizer.for(:sign_up) << :email
   end
 
-  #Gets the courses for a given user
-  def get_courses
-    @courses = @user.courses
-    @courses += Course.where(:owner_id => @user.id)
-  end  
 end

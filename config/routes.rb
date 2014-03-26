@@ -20,26 +20,6 @@ TeachBack::Application.routes.draw do
     resources :courses
   end
 
-  resources :latest_feedbacks
-
-  resources :notes
-
-  resources :attendances
-
-  resources :feedbacks
-
-  resources :notifications
-
-  resources :post_responses
-
-  resources :posts
-
-  resources :quiz_answers
-
-  resources :quiz_questions
-
-  resources :quizzes
-
 #Don't want separate access consider deleting
 #  resources :lectures
 
