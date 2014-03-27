@@ -67,11 +67,12 @@ puts "Enrolling Mary Jane in two courses ..."
 CourseEnrollment.create(user: @user, 
 						course: @course, 
 						enrollment_type: "Student")
+@course2 = Course.where(code: "COSI 22").first
 CourseEnrollment.create(user: @user,
-						course: @course,
+						course: @course2,
 						enrollment_type: "Instructor")
 
-@course2 = Course.where(code: "COSI 22").first
+
 puts "Enrolling William in two courses ..."
 CourseEnrollment.create(user: @user2,
 						course: @course,
@@ -81,4 +82,4 @@ CourseEnrollment.create(user: @user2,
 						enrollment_type: "Student")
 
 puts ".... DONE!"
->>>>>>> current-master
+
