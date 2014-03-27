@@ -25,8 +25,8 @@ class LecturesController < ApplicationController
 
     respond_to do |format|
       if @lecture.save
-        format.html { redirect_to course_lecture_url(:course_id => @course.id, :id => @lecture.id), notice: 'Lecture was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @lecture }
+        format.html { redirect_to course_url(@course), notice: 'Lecture was successfully created.' }
+        format.json { render action: 'course/show', status: :created, location: @course }
       else
         format.html { render action: 'new' }
         format.json { render json: @lecture.errors, status: :unprocessable_entity }
@@ -50,6 +50,6 @@ class LecturesController < ApplicationController
 
 	# Never trust parameters from the scary internet, only allow the white list through.
     def lecture_params
-      params.require(:lecture).permit(:title)
+      params.require(:lecture).permit(:title,:date,:info)
     end
 end

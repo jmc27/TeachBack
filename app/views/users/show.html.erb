@@ -1,15 +1,14 @@
-
 <!--                        HEADER                      -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <%= render "shared/navbar_header" %>
   <div class="collapse navbar-collapse">
     <ul class="nav navbar-nav side-nav">
-      <li class="active"><%= link_to ' Dashboard', user_path(current_user), class:'navbar-link glyphicon glyphicon-dashboard' %></li>
-      <li><a href="pastCourses.html"><i class="glyphicon glyphicon-list-alt"></i> Past Courses</a></li>
-      <li><%= link_to ' Edit Profile', edit_user_registration_path, class:'navbar-link glyphicon glyphicon-edit' %></li>
+      <li class="active"><a href="<%=user_path(@user)%>"><i class="glyphicon glyphicon-dashboard"></i> Dashboard</a></li>
+      <li><a href="#"><i class="glyphicon glyphicon-list-alt"></i> Past Courses</a></li>
+      <li><a href="<%=edit_user_registration_path%>"><i class="glyphicon glyphicon-edit"></i> Edit Profile</a></li>
     </ul>
     <%= render partial: "shared/user_header", locals: {user: @user} %>
-	</div>
+  </div>
 </nav>
 <!-- *********** -->
 
@@ -24,36 +23,30 @@
     <div class="dashCred">
       <p><i class="glyphicon glyphicon-envelope"></i> <%= @user.email %><br/>
       <i class="glyphicon glyphicon-user"></i> <%= @user.username %>
-
     </div>
   </div>
+</div>
 <!--  ***********  -->
 
 <!--                               CONTENT                -->
-  <div class="container-fluid pagepad">
-    <div class="row">
-      <div class="col-md-8 scrollable">
-        <div class= "row">
-
-
+  <div class="container-fluid contentpad">
+  <div class= "row">
+      <div class="col-sm-7 scrollable">
         <div class="panel panel-primary">
           <div class="panel-heading">
             <h4 class="panel-title"><i class="glyphicon glyphicon-th-list"></i> My Current Courses
-            <button role="button" href="#newCourseModal" class="pull-right btn btn-default" data-toggle="modal"><i class="glyphicon glyphicon-edit"></i> New Course</button></h4>
+            <button role="button" href="#newCourseModal" class="pull-right btn btn-default" data-toggle="modal"><i class="glyphicon glyphicon-edit"></i> Enroll/Create New Course</button></h4>
           </div>
           <div class="panel-body">
-
-            <%= render partial:"shared/course", collection: @user.courses %>
-
+            <div class="list-group">
+              <%= render partial:"shared/course", collection: @user.courses %>
+            </div>
           </div>
         </div>
       </div>
-      </div>
 
 
-
-      <div class="col-md-4 scrollable">
-        <div class= "row">
+      <div class="col-sm-5 scrollable">
         <div class="panel panel-primary">
           <div class="panel-heading">
             <h4 class="panel-title"><i class="glyphicon glyphicon-bell"></i> TeachBack Notifications</h4>
@@ -73,7 +66,6 @@
             </div>
           </div>
         </div>
-      </div>
     </div>
     </div>
 
@@ -95,15 +87,13 @@
                 <%= form_tag(user_course_enrollments_path(@user), method: "post") do %>
                   <div class="input-group">
                     <span class="input-group-addon">PIN</span>
-                    <%= text_field_tag(:pin, class: "form-control") %>
+                    <input type="text" class="form-control" name="pin" id="pin" placeholder="7-Digit Code">
                   </div>
-                  
                   <br>
-                  <div class="pageHolder">
+                  <div class="text-center">
                     <button type="button" class="btn btn-default" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i> Close</button>
-                    <%= button_tag(type: "submit", :class =>"btn btn-primary") do %>
-                    <i class="glyphicon glyphicon-send"> Enroll</i>
-                  <% end %>
+                    <button role="button" type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-send"></i> Enroll</button>
+
                   </div>
                 <% end %>
                 </div>
@@ -167,11 +157,9 @@
                     <%= f.text_field :instructor,class:"form-control"%>
                   </div>
                   <br>
-                  <div class="pageHolder">
+                  <div class="text-center">
                     <button type="button" class="btn btn-default" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i> Close</button>
-                    <%= button_tag(type: "submit", :class =>"btn btn-primary") do %>
-                    <i class="glyphicon glyphicon-send"> Create</i>
-                  <% end %>
+                    <button role="button" type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-send"></i> Create</button>
                   </div>
                 <% end %>
                 </div>
@@ -187,7 +175,3 @@
     <%= render "shared/footer" %>
     
   </div>
-</div>
-    
-
-

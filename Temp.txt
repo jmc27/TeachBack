@@ -1,0 +1,13 @@
+Ask about Time class & attributes
+
+NOTES:
+class SentimentManager
+	def self.sentimentList(lectureId)
+	def self.logSentiment(lectureId,sentId,userId)
+	def self.getCurrentSummary(lectureId) > [[sentId:count], ...]
+	def self.sentimentHistory()
+
+
+class SentimentHistory
+
+<a href=<%="/courses/#{@course.id}/lectures/new"%>>Create Lecture</a><br/>
