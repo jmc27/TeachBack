@@ -46,8 +46,8 @@ class LecturesController < ApplicationController
 	#Sets current lecture
 	def set_lecture
 		@lecture = Lecture.find(params[:id])
+		@sentiments = @lecture.sentiments.map {|s| [s.title, s.id]}
 	end
-
 	# Never trust parameters from the scary internet, only allow the white list through.
     def lecture_params
       params.require(:lecture).permit(:title)

@@ -18,13 +18,15 @@
         <p><i class="fa fa-spinner fa-spin fa-5x"></i></p>
         <p><i class="fa fa-thumbs-o-up fa-5x"></i></p>
       </div>
-      <div class= "row">
+      <div class= "row tpad">
       	<a href=<%="/courses/#{@course.id}"%>>Back to course</a>
+        <div class="navbar-collapse collapse">
+          <ul class="nav nav-pills nav-justified">
+              
+          </ul>
+      </div> 
       </div>
-    </div>
-    <!--  ***********  -->
-
-
+  </div>
     <!--                               BOTTOM NAVBAR                -->
     <nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
       <div class="navbar-header">
@@ -37,9 +39,9 @@
       </div> 
       <div class="navbar-collapse collapse">
           <ul class="nav nav-pills nav-justified">
-              <li class="active"><a href="engagedPage_Student.html" id="engagedButton">I'm Engaged<span id="engagedCounts" class="badge pull-right">32</span></a></li>
-              <li><a href="boredPage_Student.html" id="boredButton">I'm Bored<span id="boredCounts" class="badge pull-right">2</span></a></li>
-              <li><a href="confusedPage_Student.html" id="confusedButton">I'm Confused<span id="confusedCounts" class="badge pull-right">1</span></a></li>
+              <%= select_tag(:category_id, options_for_select(@sentiments), class: "form-control") %>
+              
           </ul>
       </div>    
     </nav>
+     <!--  ***********  -->
