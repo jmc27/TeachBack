@@ -11,16 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140319163900) do
-
-  create_table "attendances", force: true do |t|
-    t.integer  "lecture_id"
-    t.integer  "user_id"
-    t.boolean  "present"
-    t.boolean  "excused"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(version: 20140309182319) do
 
   create_table "course_enrollments", force: true do |t|
     t.integer  "user_id"
@@ -31,36 +22,19 @@ ActiveRecord::Schema.define(version: 20140319163900) do
   end
 
   create_table "courses", force: true do |t|
-    t.integer "owner_id"
-    t.string  "title"
-    t.string  "code"
-    t.string  "lecture_time"
-    t.string  "lecture_days"
-    t.date    "start_date"
-    t.date    "end_date"
-    t.string  "school"
-    t.string  "instructor"
-    t.integer "instructor_pin"
-    t.integer "student_pin"
-    t.string  "location"
-    t.string  "semester"
-  end
-
-  create_table "feedbacks", force: true do |t|
-    t.integer  "lecture_id"
-    t.integer  "course_id"
-    t.integer  "user_id"
-    t.integer  "interval"
-    t.string   "feedback"
-    t.integer  "sentiment"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "latest_feedbacks", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "lecture_id"
-    t.string   "feedback"
+    t.string   "title"
+    t.string   "code"
+    t.string   "lecture_start_time"
+    t.string   "lecture_end_time"
+    t.string   "lecture_days"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.string   "school"
+    t.string   "instructor"
+    t.string   "location"
+    t.integer  "instructor_pin"
+    t.integer  "student_pin"
+    t.string   "semester"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -75,76 +49,12 @@ ActiveRecord::Schema.define(version: 20140319163900) do
     t.datetime "updated_at"
   end
 
-  create_table "notes", force: true do |t|
-    t.integer  "lecture_id"
-    t.integer  "user_id"
-    t.text     "note"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "notifications", force: true do |t|
-    t.string   "type"
-    t.integer  "course_id"
-    t.integer  "lecture_id"
-    t.integer  "user_id"
-    t.text     "message"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "post_responses", force: true do |t|
-    t.integer  "post_id"
-    t.integer  "user_id"
-    t.string   "type"
-    t.text     "response"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "posts", force: true do |t|
-    t.integer  "lecture_id"
-    t.integer  "user_id"
-    t.string   "type"
-    t.text     "post"
-    t.integer  "views"
-    t.integer  "responses"
-    t.integer  "student_likes"
-    t.integer  "instructor_likes"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "quiz_answers", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "quiz_question_id"
-    t.string   "type"
-    t.text     "body"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "quiz_questions", force: true do |t|
-    t.integer  "quiz_id"
-    t.string   "type"
-    t.text     "body"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "quizzes", force: true do |t|
-    t.integer  "lecture_id"
-    t.integer  "course_id"
-    t.boolean  "timed"
-    t.date     "end_time"
-    t.date     "start_time"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "username"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -155,9 +65,6 @@ ActiveRecord::Schema.define(version: 20140319163900) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "username"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

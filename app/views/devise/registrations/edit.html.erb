@@ -1,36 +1,159 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-<h2>Find me TeachBack/app/views/devise/registrations/edit.html.erb</h2>
+    <!--                        HEADER                      -->
+  <div id="wrapper">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <%= render "shared/navbar_header" %>
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav side-nav">
+          <li><%= link_to ' Dashboard', user_path(current_user), class:'navbar-link glyphicon glyphicon-dashboard' %></li>
+          <li><a href="pastCourses.html"><i class="glyphicon glyphicon-list-alt"></i> Past Courses</a></li>
+          <li class="active"><%= link_to ' Edit Profile', edit_user_registration_path, class:'navbar-link glyphicon glyphicon-edit' %></li>
+        </ul>
+        <%= render partial: "shared/user_header", locals: {user: @user} %>
+    	</div>
+    </nav>
+    <!-- *********** -->
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
+    <!--                              USER DASHBOARD                -->
+    <div class="container pagepad page-wrapper">
+      <%= render "shared/flash" %>
+      <div class="panel dashPanel">
+        <%= gravatar_for @user %>
+        <div class="dashName"><small>
+          <%= @user.first_name %> <%= @user.last_name %>
+        </small></div>
+        <div class="dashCred">
+          <p><i class="glyphicon glyphicon-envelope"></i> <%= @user.email %><br/>
+          <i class="glyphicon glyphicon-user"></i> <%= @user.username %>
+        </div>
+      </div>
+    <!--  ***********  -->
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+    <!--                               CONTENT                -->
+      <div class="container-fluid pagepad">
+        <div class="row">
+          <div class="col-md-8">
+            <div class= "row">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h4 class="panel-title"><i class="glyphicon glyphicon-wrench"></i> Edit My Profile</h4>
+              </div>
+              <div class="panel-body">
+                <div class="col-sm-6">
+                  <div class="panel panel-primary">
+                    <div class="panel-heading">
+                      <h4 class="panel-title"><i class="glyphicon glyphicon-user"></i> Edit My Name, Username or E-mail</h4>
+                    </div>
+                    <div class="panel-body">
+                    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+                      <%= devise_error_messages! %>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+                      <div class="input-group">
+                        <span class="input-group-addon">FirstName</span>
+                        <%= f.text_field :first_name, class: "form-control" %>
+                      </div>
+                      <div class="input-group">
+                        <span class="input-group-addon">LastName</span>
+                        <%= f.text_field :last_name, class: "form-control" %>
+                      </div>
+                      <div class="input-group">
+                        <span class="input-group-addon">Username</span>
+                        <%= f.text_field :username, class: "form-control" %>
+                      </div>
+                      <div class="input-group">
+                        <span class="input-group-addon">E-mail</span>
+                        <%= f.email_field :email, class: "form-control" %>
+                      </div>
+                      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+                      <% end %>
+                      <br>
+                      <div class="input-group">
+                        <span class="input-group-addon">Current Password</span>
+                        <%= f.password_field :current_password, :autocomplete => "off", class: "form-control" %>
+                      </div>
+                      <br>
+                      <%= f.button(type: "submit", :class =>"btn btn-primary btn-large btn-block") do %>
+                        <i class="glyphicon glyphicon-send"> Update</i>
+                      <% end %>
+                    <% end %> 
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="panel panel-warning">
+                    <div class="panel-heading">
+                      <h4 class="panel-title"><i class="glyphicon glyphicon-lock"></i> Edit My Password</h4>
+                    </div>
+                    <div class="panel-body">
+                    <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f2| %>
+                    <%= f2.hidden_field :reset_password_token %>
+                      <div class="input-group">
+                        <span class="input-group-addon">New Password</span>
+                        <%= f2.password_field :password, class: "form-control" %>
+                      </div>
+                      <div class="input-group">
+                        <span class="input-group-addon">Re-enter Password</span>
+                        <%= f2.password_field :password_confirmation, class: "form-control" %>
+                      </div>
+                      <br>
+                      <%= f2.button(type: "submit", class: "btn btn-primary btn-large btn-block") do %>
+                        <i class="glyphicon glyphicon-send"> Update Password</i>
+                      <% end %>
+                    <% end %>
+                    </div>
+                  </div>
 
-   <div><%= f.label :first_name %><br />
-   <%= f.text_field :first_name %></div>
+                  <div class="panel panel-danger">
+                    <div class="panel-heading">
+                      <h4 class="panel-title"><i class="glyphicon glyphicon-floppy-remove"></i> Delete My Account?</h4>
+                    </div>
+                    <div class="panel-body">
+                      <%= button_to registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :class => 'btn btn-block btn-danger', :method => :delete do %>
+                        <span class="glyphicon glyphicon-remove"> DELETE!</span>
+                    <% end %>
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+            </div>
+          </div>
 
-   <div><%= f.label :last_name %><br />
-   <%= f.text_field :last_name %></div>
+          <div class="col-md-4 scrollable">
+            <div class= "row">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h4 class="panel-title"><i class="glyphicon glyphicon-bell"></i> TeachBack Notifications</h4>
+              </div>
+              <div id="userNotifications" class="panel-body">
+                <div class="alert alert-warning">
+                  <strong>Warning!</strong> Better check yourself, you're not looking too good.
+                </div>
+                <div class="alert alert-success">
+                  <strong>Warning!</strong> Better check yourself, you're not looking too good.
+                </div>
+                <div class="alert alert-info">
+                  <strong>Warning!</strong> Better check yourself, you're not looking too good.
+                </div>
+                <div class="alert alert-danger">
+                  <strong>Warning!</strong> Better check yourself, you're not looking too good.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
 
-  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-  <%= f.password_field :password, :autocomplete => "off" %></div>
+        
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+        <%= render "shared/footer" %>
+        
+      </div>
+    </div>
+  </div>
 
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-  <%= f.password_field :current_password %></div>
 
-  <div><%= f.submit "Update" %></div>
-<% end %>
+    
 
-<h3>Cancel my account</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %></p>
-
-<%= link_to "Back", :back %>

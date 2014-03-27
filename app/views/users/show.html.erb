@@ -1,3 +1,4 @@
+<<<<<<< HEAD
     <!--                        HEADER                      -->
   <div id="wrapper">
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -39,21 +40,53 @@
             /> <i class="glyphicon glyphicon-user" id="dashUserName"></i> <%= @user.username %>
         </div>
       </div>
-    </div>
-    <!--  ***********  -->
+=======
+<!--                        HEADER                      -->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <%= render "shared/navbar_header" %>
+  <div class="collapse navbar-collapse">
+    <ul class="nav navbar-nav side-nav">
+      <li class="active"><%= link_to ' Dashboard', user_path(current_user), class:'navbar-link glyphicon glyphicon-dashboard' %></li>
+      <li><a href="pastCourses.html"><i class="glyphicon glyphicon-list-alt"></i> Past Courses</a></li>
+      <li><%= link_to ' Edit Profile', edit_user_registration_path, class:'navbar-link glyphicon glyphicon-edit' %></li>
+    </ul>
+    <%= render partial: "shared/user_header", locals: {user: @user} %>
+	</div>
+</nav>
+<!-- *********** -->
 
-    <!--                               CONTENT                -->
-  <div class="container-fluid">
+<!--                              USER DASHBOARD                -->
+<div class="container pagepad page-wrapper">
+  <%= render "shared/flash" %>
+  <div class="panel dashPanel">
+    <%= gravatar_for @user %>
+    <div class="dashName"><small>
+      <%= @user.first_name %> <%= @user.last_name %>
+    </small></div>
+    <div class="dashCred">
+      <p><i class="glyphicon glyphicon-envelope"></i> <%= @user.email %><br/>
+      <i class="glyphicon glyphicon-user"></i> <%= @user.username %>
+>>>>>>> current-master
+    </div>
+  </div>
+<!--  ***********  -->
+
+<!--                               CONTENT                -->
+  <div class="container-fluid pagepad">
     <div class="row">
       <div class="col-md-8 scrollable">
         <div class= "row">
+<<<<<<< HEAD
+=======
+
+>>>>>>> current-master
         <div class="panel panel-primary">
           <div class="panel-heading">
             <h4 class="panel-title"><i class="glyphicon glyphicon-th-list"></i> My Current Courses
-            <button role="button" href="#newCourseModal" class="pull-right btn btn-default" data-toggle="modal"><i class="glyphicon glyphicon-edit"> 
-              <a href="/courses/new">Create Courses</a></i></button></h4>
+            <button role="button" href="#newCourseModal" class="pull-right btn btn-default" data-toggle="modal"><i class="glyphicon glyphicon-edit"></i> New Course</button></h4>
           </div>
           <div class="panel-body">
+<<<<<<< HEAD
           <% @courses.each do |c| %>
             <div id="currentCourses" class="list-group">
               
@@ -76,7 +109,19 @@
       
       </div>
 
+=======
+
+            <%= render partial:"shared/course", collection: @user.courses %>
+
+          </div>
+        </div>
+      </div>
+      </div>
+
+
+>>>>>>> current-master
       <div class="col-md-4 scrollable">
+        <div class= "row">
         <div class="panel panel-primary">
           <div class="panel-heading">
             <h4 class="panel-title"><i class="glyphicon glyphicon-bell"></i> TeachBack Notifications</h4>
@@ -94,24 +139,11 @@
             <div class="alert alert-danger">
               <strong>Warning!</strong> Better check yourself, you're not looking too good.
             </div>
-            <div class="alert alert-warning">
-              <strong>Warning!</strong> Better check yourself, you're not looking too good.
-            </div>
-            <div class="alert alert-success">
-              <strong>Warning!</strong> Better check yourself, you're not looking too good.
-            </div>
-            <div class="alert alert-info">
-              <strong>Warning!</strong> Better check yourself, you're not looking too good.
-            </div>
-            <div class="alert alert-danger">
-              <strong>Warning!</strong> Better check yourself, you're not looking too good.
-            </div>
-            
           </div>
         </div>
       </div>
     </div>
-
+    </div>
 
     <div id="newCourseModal" class="modal fade">
       <div class="modal-dialog">
@@ -127,17 +159,21 @@
                   <h4 class="panel-title"><i class="glyphicon glyphicon-plus"></i> Enroll in Existing Course</h4>
                 </div>
                 <div class="panel-body">
+
+                <%= form_tag(user_course_enrollments_path(@user), method: "post") do %>
                   <div class="input-group">
                     <span class="input-group-addon">PIN</span>
-                    <input type="text" class="form-control" placeholder="7-Digit Code">
+                    <%= text_field_tag(:pin, class: "form-control") %>
                   </div>
                   
                   <br>
                   <div class="pageHolder">
                     <button type="button" class="btn btn-default" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i> Close</button>
-                    <a href="#" id="updateButton" class="btn btn-primary btn-large"> <span class="glyphicon glyphicon-send"></span> Enroll</a>
+                    <%= button_tag(type: "submit", :class =>"btn btn-primary") do %>
+                    <i class="glyphicon glyphicon-send"> Enroll</i>
+                  <% end %>
                   </div>
-                  
+                <% end %>
                 </div>
               </div>
             </div>
@@ -147,44 +183,65 @@
                   <h4 class="panel-title"><i class="glyphicon glyphicon-edit"></i> Or Create New Course</h4>
                 </div>
                 <div class="panel-body">
+                  <% if !@course %>
+                    <% @course = Course.new %>
+                  <% end %>
+                  <%= form_for(@course) do |f| %>
+
                   <div class="input-group">
                     <span class="input-group-addon">Title</span>
-                    <input type="text" class="form-control" placeholder="">
+                    <%= f.text_field :title,class:"form-control" %>
                   </div>
                   <div class="input-group">
                     <span class="input-group-addon">Code</span>
-                    <input type="text" class="form-control" placeholder="Eg. CS177">
+                    <%= f.text_field :code,class:"form-control",placeholder:"Eg. CS177" %>
+
                   </div>
                   <div class="input-group">
-                    <span class="input-group-addon">Lecture Time</span>
-                    <input type="text" class="form-control" placeholder="Eg. 10:00-11:20">
+                    <span class="input-group-addon">Lecture Start Time</span>
+                    <%= f.text_field :lecture_start_time,class:"form-control",placeholder:"Eg. 13:00" %>
+                  </div>
+                  <div class="input-group">
+
+                    <span class="input-group-addon">Lecture End Time</span>
+                    <%= f.text_field :lecture_end_time,class:"form-control",placeholder:"Eg. 14:20" %>
                   </div>
                   <div class="input-group">
                     <span class="input-group-addon">Lecture Days</span>
-                    <input type="text" class="form-control" placeholder="Eg. Mon,Tue,Thur">
+                    <div class="input-group">
+                    <%= f.text_field :lecture_days,class:"form-control",placeholder:"Eg. Mon,Tue,Thur" %>
+                  </div>
+                  </div>
+                  <div class="input-group">
+                    <span class="input-group-addon">Location</span>
+                    <div class="input-group">
+                    <%= f.text_field :location,class:"form-control",placeholder:"Building, Room" %>
+                  </div>
                   </div>
                   <div class="input-group">
                     <span class="input-group-addon">Start Date</span>
-                    <input type="date" class="form-control">
+                    <%= f.date_field :start_date,class:"form-control" %>
                   </div>
                   <div class="input-group">
                     <span class="input-group-addon">End Date</span>
-                    <input type="date" class="form-control">
+                    <%= f.date_field :end_date,class:"form-control" %>
                   </div>
                   <div class="input-group">
                     <span class="input-group-addon">School</span>
-                    <input type="text" class="form-control" placeholder="">
+                    <%= f.text_field :school,class:"form-control"%>
                   </div>
                   <div class="input-group">
                     <span class="input-group-addon">Instructor</span>
-                    <input type="text" class="form-control" placeholder="">
+                    <%= f.text_field :instructor,class:"form-control"%>
                   </div>
                   <br>
                   <div class="pageHolder">
                     <button type="button" class="btn btn-default" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i> Close</button>
-                    <a href="#" id="updateButton" class="btn btn-primary btn-large"><span class="glyphicon glyphicon-send"></span> Create</a>
+                    <%= button_tag(type: "submit", :class =>"btn btn-primary") do %>
+                    <i class="glyphicon glyphicon-send"> Create</i>
+                  <% end %>
                   </div>
-                  
+                <% end %>
                 </div>
               </div>
             </div>
@@ -194,9 +251,16 @@
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
+
+    <%= render "shared/footer" %>
     
   </div>
+</div>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> current-master
     
 
 
