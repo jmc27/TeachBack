@@ -36,12 +36,5 @@ class UsersController < ApplicationController
     devise_parameter_sanitizer.for(:sign_up) << :email
   end
 
-<<<<<<< HEAD
-  #Gets the courses for a given user
-  def get_courses
-    @courses = @user.courses
-    @courses += Course.where(:owner_id => @user.id)
-  end  
-=======
->>>>>>> current-master
+
 end
