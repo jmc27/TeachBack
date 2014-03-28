@@ -1,13 +1,16 @@
 class CoursesController < ApplicationController
 	before_action :authenticate_user!
 	before_action :set_user
-	before_action :set_course, only: [:show, :edit, :update, :destroy]
+	before_action :set_course, only: [:enrolled, :show, :edit, :update, :destroy]
 
 
 	#GET /courses
 
 	def index
 		redirect_to user_root_path
+	end
+
+	def edit
 	end
 
 	#GET courses/:id
@@ -23,6 +26,10 @@ class CoursesController < ApplicationController
 	#GET courses/new
 	def new
 		@course = Course.new
+	end
+
+	def enrolled
+		@users = @course.users
 	end
 
 	def newPINS
@@ -60,6 +67,18 @@ class CoursesController < ApplicationController
         format.json { render action: 'users#show', status: :created, location: @course }
       else
         format.html { render action: 'new' }
+        format.json { render json: @course.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def update
+    respond_to do |format|
+      if @course.update(course_params)
+        format.html { redirect_to @course, notice: 'Course was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
         format.json { render json: @course.errors, status: :unprocessable_entity }
       end
     end

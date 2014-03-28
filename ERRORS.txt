@@ -1,1 +1,2 @@
 Error Log:
+	Enrolled table rows not accurate
