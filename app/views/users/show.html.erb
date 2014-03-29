@@ -5,7 +5,7 @@
     <ul class="nav navbar-nav side-nav">
       <li class="active"><a href="<%=user_path(@user)%>"><i class="glyphicon glyphicon-dashboard"></i> Dashboard</a></li>
       <li><a href="#"><i class="glyphicon glyphicon-list-alt"></i> Past Courses</a></li>
-      <li><a href="<%=edit_user_registration_path%>"><i class="glyphicon glyphicon-edit"></i> Edit Profile</a></li>
+      <li><a href="<%=edit_user_registration_path%>"><i class="fa fa-cogs fa-fw"></i> Edit Profile</a></li>
     </ul>
     <%= render partial: "shared/user_header", locals: {user: @user} %>
   </div>
@@ -147,6 +147,10 @@
                   <div class="input-group">
                     <span class="input-group-addon">School</span>
                     <%= f.text_field :school,class:"form-control"%>
+                  </div>
+                  <div class="input-group">
+                    <span class="input-group-addon">Semester</span>
+                    <%= f.text_field :semester,class:"form-control"%>
                   </div>
                   <div class="input-group">
                     <span class="input-group-addon">Instructor</span>

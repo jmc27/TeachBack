@@ -1,2 +1,4 @@
 Error Log:
 	Enrolled table rows not accurate
+	Add destroy dependencies on models??
+	Add Forgot Password? feature

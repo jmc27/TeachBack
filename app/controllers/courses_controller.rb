@@ -84,6 +84,11 @@ class CoursesController < ApplicationController
     end
   end
 
+  def destroy
+    @course.destroy
+    redirect_to user_path(@user)
+  end
+
 	private
 
  	#Sets current user

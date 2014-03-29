@@ -16,6 +16,31 @@ class LecturesController < ApplicationController
 		@lecture = Lecture.new
 	end
 
+	def edit
+	end
+
+	def update
+    respond_to do |format|
+      if @lecture.update(lecture_params)
+        format.html { redirect_to @lecture, notice: 'Lecture was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @lecture.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+	#GET courses/:id
+	def show
+		enrollment = CourseEnrollment.find_by(user_id:@user.id,course_id:@course.id)
+		if enrollment.enrollment_type == "Instructor"
+			render "show_instructor"
+		else
+			render "show_student"
+		end
+	end
+
 	#POST /courses
 	#POST /courses.json
 
@@ -32,6 +57,11 @@ class LecturesController < ApplicationController
         format.json { render json: @lecture.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def destroy
+    @lecture.destroy
+    redirect_to course_url(@course)
   end
 
 	private

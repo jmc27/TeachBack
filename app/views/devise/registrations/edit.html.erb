@@ -6,7 +6,7 @@
         <ul class="nav navbar-nav side-nav">
           <li><a href="<%=user_path(@user)%>"><i class="glyphicon glyphicon-dashboard"></i> Dashboard</a></li>
           <li><a href="#"><i class="glyphicon glyphicon-list-alt"></i> Past Courses</a></li>
-          <li class="active"><a href="<%=edit_user_registration_path%>"><i class="glyphicon glyphicon-edit"></i> Edit Profile</a></li>
+          <li class="active"><a href="<%=edit_user_registration_path%>"><i class="fa fa-cogs fa-fw"></i> Edit Profile</a></li>
         </ul>
         <%= render partial: "shared/user_header", locals: {user: @user} %>
       </div>
@@ -83,7 +83,10 @@
                         <%= f.password_field :current_password, :autocomplete => "off", class: "form-control" %>
                       </div>
                       <br>
-                      <button role="button" type="submit" class="btn btn-primary btn-block"><i class="glyphicon glyphicon-send"></i> Update Account</button>
+                      <div class="text-center">
+                        <a class="btn btn-default" href="<%=user_path(@user)%>"><i class="fa fa-reply"></i> Cancel</a>
+                        <button role="button" type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-send"></i> Update Account</button>
+                      </div>
                     <% end %> 
                     </div>
                   </div>

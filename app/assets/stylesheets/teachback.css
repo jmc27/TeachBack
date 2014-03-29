@@ -88,9 +88,12 @@ ul.nav li {
   display: inline;
 }
 ul.nav li a {
-  padding: 10px 15px 10px;
   color: #777777;
   text-decoration: none;
+}
+.nav>li>a {
+    padding-right: 5px;
+    padding-left: 5px;
 }
 ul.side-nav li a {
   padding: 10px 15px 10px;

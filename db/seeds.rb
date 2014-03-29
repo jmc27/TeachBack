@@ -57,6 +57,7 @@ Course.create(title: "Advanced Programing Techniques",
 @course = Course.where(code: "COSI 101").first
 
 @user = User.where(username: "mjane").first
+@user3 = User.where(username: "jsmith").first
 
 puts "Enrolling Mary Jane in two courses ..."
 CourseEnrollment.create(user: @user, 
