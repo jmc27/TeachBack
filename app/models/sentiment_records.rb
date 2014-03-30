@@ -1,4 +1,4 @@
 class SentimentRecords < ActiveRecord::Base
-	belongs_to :lecture
-	has_many :lecture_sentiments
+	belongs_to :lecture_sentiment
+
 end

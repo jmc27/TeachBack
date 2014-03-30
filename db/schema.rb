@@ -58,6 +58,8 @@ ActiveRecord::Schema.define(version: 20140329201836) do
 
   create_table "sentiment_records", force: true do |t|
     t.integer  "lecture_sentiment_id"
+    t.integer  "user_id"
+    t.datetime "timestamp"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

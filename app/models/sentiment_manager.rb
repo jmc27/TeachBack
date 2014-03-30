@@ -1,9 +1,10 @@
 class sentiment_manager
-	def self.getAvailableSentiments
-		[:bored, :confused]
+	def self.getAvailableSentiments(lecture)
+		[:engaged, :confused]
 	end
 
-	def SM.recordSentiment(u, t, l, sent)
+	def SM.recordSentiment(u_id, timestamp, lecture_sentiment_id)
+		SentimentRecord.create(u, t, lecture_sentiment_id)
 	end
 
 	def SM.getSentHist(lecture, from_t, to_t, int)
@@ -16,7 +17,7 @@ end
 
 class SentHistValue
 	def getSentiment
-		:bored
+		:engaged
 	end
 
 	def getStartTime
