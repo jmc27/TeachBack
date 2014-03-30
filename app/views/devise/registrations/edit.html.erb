@@ -4,12 +4,12 @@
       <%= render "shared/navbar_header" %>
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav side-nav">
-          <li><%= link_to ' Dashboard', user_path(current_user), class:'navbar-link glyphicon glyphicon-dashboard' %></li>
-          <li><a href="pastCourses.html"><i class="glyphicon glyphicon-list-alt"></i> Past Courses</a></li>
-          <li class="active"><%= link_to ' Edit Profile', edit_user_registration_path, class:'navbar-link glyphicon glyphicon-edit' %></li>
+          <li><a href="<%=user_path(@user)%>"><i class="glyphicon glyphicon-dashboard"></i> Dashboard</a></li>
+          <li><a href="#"><i class="glyphicon glyphicon-list-alt"></i> Past Courses</a></li>
+          <li class="active"><a href="<%=edit_user_registration_path%>"><i class="fa fa-cogs fa-fw"></i> Edit Profile</a></li>
         </ul>
         <%= render partial: "shared/user_header", locals: {user: @user} %>
-    	</div>
+      </div>
     </nav>
     <!-- *********** -->
 
@@ -26,10 +26,15 @@
           <i class="glyphicon glyphicon-user"></i> <%= @user.username %>
         </div>
       </div>
+      
     <!--  ***********  -->
 
     <!--                               CONTENT                -->
-      <div class="container-fluid pagepad">
+      <div class="container-fluid contentpad">
+        <%= render "shared/flash" %>
+        <% if @user.errors.any? %>
+          <%= render partial: "shared/create_errors", locals: {object: @user, name:"user"} %>
+        <% end %>
         <div class="row">
           <div class="col-md-8">
             <div class= "row">
@@ -45,8 +50,6 @@
                     </div>
                     <div class="panel-body">
                     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-                      <%= devise_error_messages! %>
-
                       <div class="input-group">
                         <span class="input-group-addon">FirstName</span>
                         <%= f.text_field :first_name, class: "form-control" %>
@@ -66,50 +69,36 @@
                       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
                         <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
                       <% end %>
+                      <div class="input-group">
+                        <span class="input-group-addon">New Password</span>
+                        <%= f.password_field :password, class: "form-control",:autocomplete => "off", placeholder:"Optional" %>
+                      </div>
+                      <div class="input-group">
+                        <span class="input-group-addon">Re-enter Password</span>
+                        <%= f.password_field :password_confirmation, class: "form-control", placeholder:"Optional" %>
+                      </div>
                       <br>
                       <div class="input-group">
                         <span class="input-group-addon">Current Password</span>
                         <%= f.password_field :current_password, :autocomplete => "off", class: "form-control" %>
                       </div>
                       <br>
-                      <%= f.button(type: "submit", :class =>"btn btn-primary btn-large btn-block") do %>
-                        <i class="glyphicon glyphicon-send"> Update</i>
-                      <% end %>
+                      <div class="text-center">
+                        <a class="btn btn-default" href="<%=user_path(@user)%>"><i class="fa fa-reply"></i> Cancel</a>
+                        <button role="button" type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-send"></i> Update Account</button>
+                      </div>
                     <% end %> 
                     </div>
                   </div>
                 </div>
                 <div class="col-sm-6">
-                  <div class="panel panel-warning">
-                    <div class="panel-heading">
-                      <h4 class="panel-title"><i class="glyphicon glyphicon-lock"></i> Edit My Password</h4>
-                    </div>
-                    <div class="panel-body">
-                    <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f2| %>
-                    <%= f2.hidden_field :reset_password_token %>
-                      <div class="input-group">
-                        <span class="input-group-addon">New Password</span>
-                        <%= f2.password_field :password, class: "form-control" %>
-                      </div>
-                      <div class="input-group">
-                        <span class="input-group-addon">Re-enter Password</span>
-                        <%= f2.password_field :password_confirmation, class: "form-control" %>
-                      </div>
-                      <br>
-                      <%= f2.button(type: "submit", class: "btn btn-primary btn-large btn-block") do %>
-                        <i class="glyphicon glyphicon-send"> Update Password</i>
-                      <% end %>
-                    <% end %>
-                    </div>
-                  </div>
-
                   <div class="panel panel-danger">
                     <div class="panel-heading">
                       <h4 class="panel-title"><i class="glyphicon glyphicon-floppy-remove"></i> Delete My Account?</h4>
                     </div>
                     <div class="panel-body">
-                      <%= button_to registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :class => 'btn btn-block btn-danger', :method => :delete do %>
-                        <span class="glyphicon glyphicon-remove"> DELETE!</span>
+                      <%= button_to registration_path(resource_name), :data => { :confirm => "Are you sure about this?" }, :class => 'btn btn-block btn-danger', :method => :delete do %>
+                        <span class="glyphicon glyphicon-remove"> DELETE ACCOUNT!</span>
                     <% end %>
                     </div>
                   </div>

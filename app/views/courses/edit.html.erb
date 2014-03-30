@@ -2,11 +2,11 @@
   <%= render "shared/navbar_header" %>
   <div class="collapse navbar-collapse">
     <ul class="nav navbar-nav side-nav">
-      <li class="active"><a href="<%= course_path(@course) %>"><i class="glyphicon glyphicon-dashboard"></i> Dashboard</a></li>
+      <li><a href="<%= course_path(@course) %>"><i class="glyphicon glyphicon-dashboard"></i> Dashboard</a></li>
       <li><a href="<%=enrolled_url(id:@course.id)%>"><i class="fa fa-users fa-fw"></i> Enrolled</a></li>
       <li><a href="#"><i class="fa fa-check-square-o fa-fw"></i> Attendance</a></li>
       <li><a href="#"><i class="glyphicon glyphicon-list-alt"></i> Grades</a></li>
-      <li><a href="<%=edit_course_path(@course)%>"><i class="fa fa-cogs fa-fw"></i> Edit Course</a></li>
+      <li class="active"><a href="<%=edit_course_path(@course)%>"><i class="fa fa-cogs fa-fw"></i> Edit Course</a></li>
     </ul>
     <%= render partial: "shared/user_header", locals: {user: @user} %>
   </div>
@@ -15,6 +15,7 @@
 
 <!--                              COURSE DASHBOARD                -->
 <div class="container pagepad page-wrapper">
+  
   <div class="row">
     <div class="col-sm-12">
       <div class="panel panel-primary">
@@ -49,15 +50,67 @@
     <%= render partial: "shared/create_errors", locals: {object: @course, name:"course"} %>
   <% end %>
   <div class="row">
-    <div class="col-sm-7 scrollable">
+    <div class="col-sm-7">
       <div class="panel panel-primary">
         <div class="panel-heading">
-          <h4 class="panel-title"><i class="glyphicon glyphicon-th-list"></i> Course Lectures<button role="button" href="#newLectureModal" class="pull-right btn btn-default" data-toggle="modal"><i class="glyphicon glyphicon-edit"></i> Create New Lecture</button></h4>
+          <h4 class="panel-title"><i class="glyphicon glyphicon-edit"></i> Edit Course<%= link_to 'Delete Course', [@course],
+               method: :delete,
+               data: { confirm: 'Are you sure?' }, class:"pull-right btn btn-danger" %>
+          </h4>
         </div>
         <div class="panel-body">
-          <div class="list-group">
-            <%= render partial:"shared/lecture", collection: @course.lectures %>
+          <%= form_for(@course) do |f| %>
+
+          <div class="input-group">
+            <span class="input-group-addon">Title</span>
+            <%= f.text_field :title,class:"form-control" %>
           </div>
+          <div class="input-group">
+            <span class="input-group-addon">Code</span>
+            <%= f.text_field :code,class:"form-control",placeholder:"Eg. CS177" %>
+          </div>
+          <div class="input-group">
+            <span class="input-group-addon">Lecture Start Time</span>
+            <%= f.text_field :lecture_start_time,class:"form-control",placeholder:"Eg. 13:00" %>
+          </div>
+          <div class="input-group">
+            <span class="input-group-addon">Lecture End Time</span>
+            <%= f.text_field :lecture_end_time,class:"form-control",placeholder:"Eg. 14:20" %>
+          </div>
+          <div class="input-group">
+            <span class="input-group-addon">Lecture Days</span>
+            <%= f.text_field :lecture_days,class:"form-control",placeholder:"Eg. Mon,Tue,Thur" %>
+          </div>
+          <div class="input-group">
+            <span class="input-group-addon">Location</span>
+            <%= f.text_field :location,class:"form-control",placeholder:"Building, Room" %>
+          </div>
+          <div class="input-group">
+            <span class="input-group-addon">Start Date</span>
+            <%= f.date_field :start_date,class:"form-control" %>
+          </div>
+          <div class="input-group">
+            <span class="input-group-addon">End Date</span>
+            <%= f.date_field :end_date,class:"form-control" %>
+          </div>
+          <div class="input-group">
+            <span class="input-group-addon">School</span>
+            <%= f.text_field :school,class:"form-control"%>
+          </div>
+          <div class="input-group">
+            <span class="input-group-addon">Semester</span>
+            <%= f.text_field :semester,class:"form-control"%>
+          </div>
+          <div class="input-group">
+            <span class="input-group-addon">Instructor</span>
+            <%= f.text_field :instructor,class:"form-control"%>
+          </div>
+          <br>
+          <div class="text-center">
+            <a class="btn btn-default" href="<%= course_path(@course) %>"><i class="fa fa-reply"></i> Cancel</a>
+            <button role="button" type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-send"></i> Update</button>
+          </div>
+        <% end %>
         </div>
       </div>
     </div>
@@ -88,43 +141,5 @@
       </div>
     </div>
   </div>
-
-  <div id="newLectureModal" class="modal fade">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="panel panel-primary">
-        <div class="panel-heading">
-          <h4 class="panel-title"><i class="glyphicon glyphicon-edit"></i> New TeachBack Lecture</h4>
-        </div>
-        <div class="panel-body">
-          <% if !@lecture %>
-            <% @lecture = Lecture.new %>
-          <% end %>
-          <%= form_for([@course, @lecture]) do |f| %>
-            
-          <div class="input-group">
-            <span class="input-group-addon">Title</span>
-            <%= f.text_field :title,class:"form-control" %>
-          </div>
-          <div class="input-group">
-            <span class="input-group-addon">Date</span>
-            <%= f.date_field :date,class:"form-control" %>
-          </div>
-          <div class="input-group">
-            <span class="input-group-addon">Info/Summary</span>
-            <%= f.text_area :info, placeholder:"Optional",class:"form-control" %>
-          </div>
-          
-          <br>
-          <div class="text-center">
-            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i> Close</button>
-            <button role="button" type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-send"></i> Create</button>
-          </div>
-          <% end %>    
-        </div>
-      </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
   <%= render "shared/footer" %>
 </div>

@@ -41,7 +41,7 @@ Course.create(title: "Intro to CS",
 							start_date: Date.new(2014,1,14),
 							end_date: Date.new(2014,5,11),
 							semester: "Spring 2014",
-							school: "Brandeis",
+							school: "Harvard University",
 							location: "Volen 101",
 							instructor: "#{@user.first_name} #{@user.last_name}")
 Course.create(title: "Advanced Programing Techniques",
@@ -54,12 +54,13 @@ Course.create(title: "Advanced Programing Techniques",
 							start_date: Date.new(2014,1,14),
 							end_date: Date.new(2014,5,11),
 							semester: "Spring 2014",
-							school: "Brandeis",
+							school: "Brandeis University",
 							location: "Volen 101",
 							instructor: "#{@user2.first_name} #{@user2.last_name}")
 @course = Course.where(code: "COSI 101").first
 
 @user = User.where(username: "mjane").first
+@user3 = User.where(username: "jsmith").first
 
 puts "Enrolling Mary Jane in two courses ..."
 CourseEnrollment.create(user: @user, 
@@ -78,8 +79,8 @@ CourseEnrollment.create(user: @user2,
 						course: @course2,
 						enrollment_type: "Student")
 lecture = @course.lectures.create(title: "First day of class",
-										course_id: @course.id,
-										info: "Info about the class"
+										info: "Info about the class",
+										date: "2014-03-30"
 										)
 puts lecture
 puts "Creating sentiments and lecture sentiments"

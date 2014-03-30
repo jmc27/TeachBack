@@ -51,7 +51,6 @@ ActiveRecord::Schema.define(version: 20140330205628) do
     t.integer  "course_id"
     t.date     "date"
     t.text     "info"
-    t.integer  "total_students"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

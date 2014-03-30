@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   end
 
   def after_updated_account_path_for(resource)
-  	user_path(current_user)
+    user_path(current_user)
   end
 
   #Allow additional parameters
