@@ -13,6 +13,7 @@ TeachBack::Application.routes.draw do
   match 'user_root' => 'users#show', as: :user_root, via: :all
   match '/users/sign_in' => 'home#index', via: :all
   get 'courses/:id/enrolled' => 'courses#enrolled', as: :enrolled
+  get 'courses/:id/lectures/:id/record_sentiment' => 'lectures#record_sentiment', as: :record_sentiment
 
   #Make it possible for users to view their enrollments and created courses, consider routing
   resources :users do

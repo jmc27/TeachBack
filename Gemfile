@@ -46,6 +46,7 @@ gem 'pry'
 gem 'pry-stack_explorer'
 gem 'awesome_print'
 gem 'hirb'
+gem 'pusher'
 
 
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'

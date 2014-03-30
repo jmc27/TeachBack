@@ -3,7 +3,7 @@ class LecturesController < ApplicationController
 	before_action :set_user
 	before_action :set_course
 	before_action :set_lecture, only: [:show, :edit, :update, :destroy]
-
+	before_action :set_sentiments, only: [:show, :record_sentiment]
 	#GET /courses/[:id]/lectures
 
 	def index
@@ -15,6 +15,12 @@ class LecturesController < ApplicationController
 	def new
 		@lecture = Lecture.new
 	end
+
+	def reportStudent(id)
+	 	Pusher['teachback'].trigger('studentDetected', {
+	    	message: "TeachBack: Student #{id} in lecture at #{Time.now}"
+	    })
+	 end
 
 	def edit
 	end
@@ -37,7 +43,8 @@ class LecturesController < ApplicationController
 		if enrollment.enrollment_type == "Instructor"
 			render "show_instructor"
 		else
-			render "show_student"
+			render "show_student", layout: "devise"
+			reportStudent(@user.id)
 		end
 	end
 
@@ -64,6 +71,12 @@ class LecturesController < ApplicationController
     redirect_to course_url(@course)
   end
 
+  def record_sentiment
+  	puts "******************* #{params}   *************"
+  	render "show"
+  end
+
+
 	private
 	def set_user
 		@user = current_user
@@ -76,6 +89,11 @@ class LecturesController < ApplicationController
 	#Sets current lecture
 	def set_lecture
 		@lecture = Lecture.find(params[:id])
+	end
+
+	#Sets current lecture's sentiments
+	def set_sentiments
+		@sentiments = [{id:1,title:"I'm Engaged"},{id:2,title:"I'm Bored"},{id:3,title:"I'm Confused"}]
 	end
 
 	# Never trust parameters from the scary internet, only allow the white list through.

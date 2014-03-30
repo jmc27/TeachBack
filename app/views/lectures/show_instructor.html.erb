@@ -39,6 +39,8 @@
     <%= render partial: "shared/create_errors", locals: {object: @lecture, name:"lecture"} %>
   <% end %>
   <div class="row">
+    <div id="notification" class="alert alert-success">
+    </div>
     <div class="col-sm-6">
       <div class="panel panel-primary">
         <div class="panel-heading">
@@ -65,6 +67,21 @@
 </div>
 <script type="text/javascript" charset="utf-8">
   $(function () {
+    Pusher.log = function(message) {
+      if (window.console && window.console.log) {
+        window.console.log(message);
+      }
+    };
+
+    var pusher = new Pusher('b63a1fa524dead8492bb');
+    var channel = pusher.subscribe('teachback');
+    channel.bind('studentDetected', function(data) {
+      $('#notification').html(data.message);
+    });
+
+
+
+
     var chart;
     $('#feedbackDonut').highcharts({
         chart: {
