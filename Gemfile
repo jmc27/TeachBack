@@ -11,6 +11,8 @@ gem 'therubyracer', :platform => :ruby
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
+gem 'font-awesome-sass'
+
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -44,6 +46,7 @@ gem 'pry'
 gem 'pry-stack_explorer'
 gem 'awesome_print'
 gem 'hirb'
+gem 'pusher'
 
 
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'

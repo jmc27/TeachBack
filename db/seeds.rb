@@ -1,7 +1,6 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 
-
 User.destroy_all
 Course.destroy_all
 CourseEnrollment.destroy_all
@@ -31,7 +30,6 @@ bjohn = User.create(first_name: "William",
 puts "Creating two courses ..."
 Course.create(title: "Intro to CS",
 							code: "COSI 101",
-
 							instructor_pin: 1231453,
 							student_pin: 4349493,
 							lecture_days: "M,W,F",
@@ -40,10 +38,9 @@ Course.create(title: "Intro to CS",
 							start_date: Date.new(2014,1,14),
 							end_date: Date.new(2014,5,11),
 							semester: "Spring 2014",
-							school: "Brandeis",
+							school: "Harvard University",
 							location: "Volen 101",
 							instructor: "#{@user.first_name} #{@user.last_name}")
-
 Course.create(title: "Advanced Programing Techniques",
 							code: "COSI 22",
 							instructor_pin: 7867567, #Now will validated as unique in the model
@@ -51,28 +48,26 @@ Course.create(title: "Advanced Programing Techniques",
 							lecture_days: "M,W,F",
 							lecture_start_time: "12:30",
 							lecture_end_time: "13:50",
-
 							start_date: Date.new(2014,1,14),
 							end_date: Date.new(2014,5,11),
 							semester: "Spring 2014",
-							school: "Brandeis",
+							school: "Brandeis University",
 							location: "Volen 101",
 							instructor: "#{@user2.first_name} #{@user2.last_name}")
 @course = Course.where(code: "COSI 101").first
 
 @user = User.where(username: "mjane").first
+@user3 = User.where(username: "jsmith").first
 
 puts "Enrolling Mary Jane in two courses ..."
-
 CourseEnrollment.create(user: @user, 
 						course: @course, 
 						enrollment_type: "Student")
-@course2 = Course.where(code: "COSI 22").first
 CourseEnrollment.create(user: @user,
-						course: @course2,
+						course: @course,
 						enrollment_type: "Instructor")
 
-
+@course2 = Course.where(code: "COSI 22").first
 puts "Enrolling William in two courses ..."
 CourseEnrollment.create(user: @user2,
 						course: @course,
@@ -82,4 +77,3 @@ CourseEnrollment.create(user: @user2,
 						enrollment_type: "Student")
 
 puts ".... DONE!"
-

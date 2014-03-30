@@ -31,7 +31,7 @@ b, strong{
 .side-nav {
     margin-left: -225px;
     left: 225px;
-    width: 200px;
+    width: 170px;
     position: fixed;
     top: 50px;
     height: 100%;
@@ -42,19 +42,21 @@ b, strong{
 }
 .dashName{
     position:absolute;
-    padding-left:200px;
+    padding-left:170px;
     font-size:30px;
+    font-family: 'Abel', sans-serif;
     font-weight: 600; 
 }
 .dashCred{
     position:absolute;
     padding-left:400px;
+    font-family: 'Abel', sans-serif;
 }
 .dashPicture{
-     margin-top:50px; 
-     width:120px;
+     margin-top:40px; 
+     width:100px;
      margin-left:50px;
-     margin-bottom:-60px;
+     margin-bottom:-50px;
 }
 .dashPanel{
     background-image:url(userDash.jpg); 
@@ -82,13 +84,23 @@ b, strong{
 .notification{
     padding-top: 0px;
 }
-ul.nav li {
-  display: inline;
-}
+
 ul.nav li a {
+  color: #777777;
+  text-decoration: none;
+}
+.nav>li>a {
+    padding-right: 5px;
+    padding-left: 5px;
+}
+ul.side-nav li a {
   padding: 10px 15px 10px;
   color: #777777;
   text-decoration: none;
+  width:170px;
+}
+.list-group-item-heading {
+    margin-bottom: 0px;
 }
 
 .flash_notice, .flash_alert {
@@ -135,7 +147,7 @@ ul.nav li a {
         height: 600px;  
     } 
     #wrapper {
-        padding-left: 250px;
+        padding-left: 170px;
     }
 
     .page-wrapper {
@@ -150,6 +162,9 @@ ul.nav li a {
 }
 .pagepad{
     padding-top: 65px;
+}
+.contentpad{
+    padding-top: 45px;
 }
 .rpad{
     padding-right: 20px;
@@ -179,15 +194,12 @@ hr {
     text-align:auto;
 }
 .bs-docs-footer{
-    padding-top:10px;
     padding-bottom:20px;
-    margin-top:100px;
     background-color:#eeefe9;
     text-align:center;
     border-top:1px solid #e5e5e5;
 }
 .bs-docs-footer-links{
-    margin-top:20px;
     padding-left:0;color:#999;
 }
 .bs-docs-footer-links li{
@@ -199,7 +211,8 @@ hr {
 }
 
 .bs-docs-footer{
-    margin-top:0;border-top:0;
+    margin-top:0;
+    border-top:0;
 }
 
 .scrollable {

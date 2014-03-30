@@ -3,12 +3,12 @@
   <%= render "shared/navbar_header" %>
   <div class="collapse navbar-collapse">
     <ul class="nav navbar-nav side-nav">
-      <li class="active"><%= link_to ' Dashboard', user_path(current_user), class:'navbar-link glyphicon glyphicon-dashboard' %></li>
-      <li><a href="pastCourses.html"><i class="glyphicon glyphicon-list-alt"></i> Past Courses</a></li>
-      <li><%= link_to ' Edit Profile', edit_user_registration_path, class:'navbar-link glyphicon glyphicon-edit' %></li>
+      <li class="active"><a href="<%=user_path(@user)%>"><i class="glyphicon glyphicon-dashboard"></i> Dashboard</a></li>
+      <li><a href="#"><i class="glyphicon glyphicon-list-alt"></i> Past Courses</a></li>
+      <li><a href="<%=edit_user_registration_path%>"><i class="glyphicon glyphicon-edit"></i> Edit Profile</a></li>
     </ul>
     <%= render partial: "shared/user_header", locals: {user: @user} %>
-	</div>
+  </div>
 </nav>
 <!-- *********** -->
 
@@ -35,15 +35,13 @@
           <%= form_tag(user_course_enrollments_path(@user), method: "post") do %>
             <div class="input-group">
               <span class="input-group-addon">PIN</span>
-              <%= text_field_tag(:pin, class: "form-control") %>
+              <input type="text" class="form-control" name="pin" id="pin" placeholder="7-Digit Code">
             </div>
-            
             <br>
-            <div class="pageHolder">
-              <button type="button" class="btn btn-default" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i> Close</button>
-              <%= button_tag(type: "submit", :class =>"btn btn-primary") do %>
-              <i class="glyphicon glyphicon-send"> Enroll</i>
-            <% end %>
+            <div class="text-center">
+              <a class="btn btn-default" href="<%=user_path(@user)%>"><i class="fa fa-reply"></i> Cancel</a>
+              <button role="button" type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-send"></i> Enroll</button>
+
             </div>
           <% end %>
           </div>
@@ -102,11 +100,9 @@
               <%= f.text_field :instructor,class:"form-control"%>
             </div>
             <br>
-            <div class="pageHolder">
-              <button type="button" class="btn btn-default" data-dismiss="modal"><i class="glyphicon glyphicon-remove"></i> Close</button>
-              <%= button_tag(type: "submit", :class =>"btn btn-primary") do %>
-              <i class="glyphicon glyphicon-send"> Create</i>
-            <% end %>
+            <div class="text-center">
+              <a class="btn btn-default" href="<%=user_path(@user)%>"><i class="fa fa-reply"></i> Cancel</a>
+              <button role="button" type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-send"></i> Create</button>
             </div>
           <% end %>
           </div>
@@ -115,8 +111,13 @@
       
     </div>
    
+
     <%= render "shared/footer" %>
     
   </div>
 </div>
+
+
+    
+
 

@@ -1,13 +1,16 @@
 class CoursesController < ApplicationController
 	before_action :authenticate_user!
 	before_action :set_user
-	before_action :set_course, only: [:show, :edit, :update, :destroy]
+	before_action :set_course, only: [:enrolled, :show, :edit, :update, :destroy]
 
 
 	#GET /courses
 
 	def index
 		redirect_to user_root_path
+	end
+
+	def edit
 	end
 
 	#GET courses/:id
@@ -25,6 +28,9 @@ class CoursesController < ApplicationController
 		@course = Course.new
 	end
 
+	def enrolled
+		@users = @course.users
+	end
 
 	def newPINS
 		allPins = []
@@ -32,7 +38,6 @@ class CoursesController < ApplicationController
 			allPins.push course.instructor_pin
 			allPins.push course.student_pin
 		end
-
 		pins = []
 		while pins.size < 2
 			pin = 1000000 + Random.rand(10000000 - 1000000)
@@ -43,7 +48,6 @@ class CoursesController < ApplicationController
 			allPins.push pin
 		end
 		return pins
-
 	end
 
 	#POST /courses
@@ -68,6 +72,23 @@ class CoursesController < ApplicationController
     end
   end
 
+  def update
+    respond_to do |format|
+      if @course.update(course_params)
+        format.html { redirect_to @course, notice: 'Course was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @course.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def destroy
+    @course.destroy
+    redirect_to user_path(@user)
+  end
+
 	private
 
  	#Sets current user
@@ -82,9 +103,7 @@ class CoursesController < ApplicationController
 
 # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-
       params.require(:course).permit(:title, :code, :instructor, :lecture_days, :start_date, :end_date, :school, :semester, :lecture_start_time, :lecture_end_time, :location)
-
     end
 
 end
