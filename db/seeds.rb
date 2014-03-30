@@ -79,8 +79,8 @@ CourseEnrollment.create(user: @user2,
 						course: @course2,
 						enrollment_type: "Student")
 lecture = @course.lectures.create(title: "First day of class",
-										course_id: @course.id,
-										info: "Info about the class"
+										info: "Info about the class",
+										date: "2014-03-30"
 										)
 puts lecture
 puts "Creating sentiments and lecture sentiments"
