@@ -4,6 +4,9 @@
 User.destroy_all
 Course.destroy_all
 CourseEnrollment.destroy_all
+Sentiment.destroy_all
+LectureSentiment.destroy_all
+SentimentRecords.destroy_all
 
 puts "Creating 3 users ...."
 jsmith = User.create(first_name: "John",
@@ -24,8 +27,8 @@ bjohn = User.create(first_name: "William",
 			password: "wtarimo2014",
 			email: "wtarimo@brandeis.edu")
 
-@user = User.where(username: "jsmith").first
-@user2 = User.where(username: "wtarimo").first
+@user2 = User.where(username: "jsmith").first
+@user = User.where(username: "wtarimo").first
 
 puts "Creating two courses ..."
 Course.create(title: "Intro to CS",
@@ -63,17 +66,30 @@ puts "Enrolling Mary Jane in two courses ..."
 CourseEnrollment.create(user: @user, 
 						course: @course, 
 						enrollment_type: "Student")
-CourseEnrollment.create(user: @user,
+CourseEnrollment.create(user: @user2,
 						course: @course,
 						enrollment_type: "Instructor")
 
 @course2 = Course.where(code: "COSI 22").first
 puts "Enrolling William in two courses ..."
-CourseEnrollment.create(user: @user2,
-						course: @course,
+CourseEnrollment.create(user: @user,
+						course: @course2,
 						enrollment_type: "Instructor")
 CourseEnrollment.create(user: @user2,
 						course: @course2,
 						enrollment_type: "Student")
+lecture = @course.lectures.create(title: "First day of class",
+										course_id: @course.id,
+										info: "Info about the class"
+										)
+puts lecture
+puts "Creating sentiments and lecture sentiments"
+engaged = Sentiment.create(title: "Engaged", description:"You are understading what's going on")
+confused = Sentiment.create(title: "Confused", description: "just not getting it")
+lecture_sentiment1 = lecture.lecture_sentiments.create(sentiment_id: engaged.id)
+lecture_sentiment2 = lecture.lecture_sentiments.create(sentiment_id: confused.id)
 
+puts "Creating sentiment records"
+sr = SentimentRecords.create(user_id: @user.id, timestamp: Time.now, lecture_sentiment_id: lecture_sentiment1.id)
+sr2 = SentimentRecords.create(user_id: @user2.id, timestamp: Time.now, lecture_sentiment_id: lecture_sentiment2.id)
 puts ".... DONE!"
