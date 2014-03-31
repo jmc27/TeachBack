@@ -6,7 +6,7 @@ Course.destroy_all
 CourseEnrollment.destroy_all
 Sentiment.destroy_all
 LectureSentiment.destroy_all
-SentimentRecords.destroy_all
+SentimentRecord.destroy_all
 
 puts "Creating 3 users ...."
 jsmith = User.create(first_name: "John",
@@ -90,6 +90,6 @@ lecture_sentiment1 = lecture.lecture_sentiments.create(sentiment_id: engaged.id)
 lecture_sentiment2 = lecture.lecture_sentiments.create(sentiment_id: confused.id)
 
 puts "Creating sentiment records"
-sr = SentimentRecords.create(user_id: @user.id, timestamp: Time.now, lecture_sentiment_id: lecture_sentiment1.id)
-sr2 = SentimentRecords.create(user_id: @user2.id, timestamp: Time.now, lecture_sentiment_id: lecture_sentiment2.id)
+sr = SentimentRecord.create(user_id: @user.id, timestamp: Time.now, lecture_sentiment_id: lecture_sentiment1.id)
+sr2 = SentimentRecord.create(user_id: @user2.id, timestamp: Time.now, lecture_sentiment_id: lecture_sentiment2.id)
 puts ".... DONE!"
