@@ -1,10 +1,10 @@
-class sentiment_manager
+class SM
 	def self.getAvailableSentiments(lecture)
 		[:engaged, :confused]
 	end
 
 	def SM.recordSentiment(u_id, timestamp, lecture_sentiment_id)
-		SentimentRecord.create(u, t, lecture_sentiment_id)
+		SentimentRecords.create(user_id: u_id, timestamp: timestamp, lecture_sentiment_id: lecture_sentiment_id)
 	end
 
 	def SM.getSentHist(lecture, from_t, to_t, int)
