@@ -52,6 +52,9 @@ gem 'pusher'
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 gem 'less-rails'
 
+group :test do
+  gem "minitest", "~> 4.7"
+end
 
 #gem 'rake', :group => :test
 # Use ActiveModel has_secure_password
